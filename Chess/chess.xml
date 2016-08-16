@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- # Main Scene File -->
+<scene version="0.5.0">
+	<integrator type="direct" name="integrator">
+		<integer name="emitterSamples" value="1"/>
+		<boolean name="hideEmitters" value="false"/>
+		<boolean name="strictNormals" value="false"/>
+		<integer name="bsdfSamples" value="1"/>
+	</integrator>
+	<sensor id="Camera-camera" type="perspective">
+		<float name="fov" value="49.134343"/>
+		<sampler type="ldsampler" name="sampler">
+			<integer name="sampleCount" value="16"/>
+		</sampler>
+		<float name="farClip" value="100.000000"/>
+		<transform name="toWorld">
+			<lookat target="6.268348, 4.107357, 5.581867" up="-0.243562, 0.938810, -0.243542" origin="6.980972, 4.450914, 6.193533"/>
+		</transform>
+		<film type="ldrfilm" name="film">
+			<boolean name="highQualityEdges" value="false"/>
+			<boolean name="fitHorizontal" value="true"/>
+			<float name="exposure" value="0.000000"/>
+			<float name="shiftY" value="0.000000"/>
+			<string name="pixelFormat" value="rgb"/>
+			<string name="label[10,10]" value="Integrator:$integrator['type'], $film['width']x$film['height'],$sampler['sampleCount']spp, rendertime:$scene['renderTime'],memory:$scene['memUsage']"/>
+			<integer name="height" value="540"/>
+			<integer name="width" value="960"/>
+			<boolean name="banner" value="true"/>
+			<float name="shiftX" value="0.000000"/>
+			<float name="pixelAspectX" value="1.000000"/>
+			<float name="gamma" value="-1.000000"/>
+			<float name="pixelAspectY" value="1.000000"/>
+			<string name="tonemapMethod" value="gamma"/>
+			<string name="fileFormat" value="png"/>
+			<rfilter type="gaussian" name="rfilter">
+				<float name="stddev" value="0.500000"/>
+			</rfilter>
+		</film>
+		<float name="nearClip" value="0.100000"/>
+		<string name="fovAxis" value="x"/>
+	</sensor>
+	<bsdf id="PBoard-bl_mat-bsdf" type="blendbsdf">
+		<float name="weight" value="0.520134"/>
+		<bsdf type="blendbsdf" name="bsdf1">
+			<float name="weight" value="0.602093"/>
+			<bsdf type="conductor" name="bsdf1">
+				<string name="material" value="none"/>
+				<rgb value="1.000000 1.000000 1.000000" name="specularReflectance"/>
+			</bsdf>
+			<bsdf type="phong" name="bsdf2">
+				<rgb value="0.198954 0.198954 0.198954" name="specularReflectance"/>
+				<float name="exponent" value="95.000000"/>
+			</bsdf>
+		</bsdf>
+		<bsdf type="diffuse" name="bsdf2">
+			<rgb value="0.800000 0.800000 0.800000" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<shape id="ChessBoard_ChessBoardShape_0000_m000_0.000000" type="serialized">
+		<transform name="toWorld">
+			<matrix value="0.436865 0.000000 0.000000 0.000000 0.000000 0.436865 -0.000000 0.000000 0.000000 0.000000 0.436865 0.000000 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<string name="filename" value="C:/Users/Asus/Desktop/Projetos/Render/Chess/chess/Scene/00001/ChessBoardShape_0000_m000_0_000000.serialized"/>
+		<ref id="PBoard-bl_mat-bsdf" name="bsdf"/>
+	</shape>
+	<bsdf id="Glass-bl_mat-bsdf" type="thindielectric">
+		<rgb value="0.716495 0.716495 0.716495" name="specularReflectance"/>
+		<float name="intIOR" value="1.000000"/>
+		<rgb value="0.672332 0.702072 0.679697" name="specularTransmittance"/>
+	</bsdf>
+	<shape id="pion chess_pion chess_0000_m000_0.000000" type="serialized">
+		<transform name="toWorld">
+			<matrix value="0.335102 -0.024264 -0.090428 1.374285 0.017089 0.346254 -0.029583 1.040914 -0.092054 -0.024050 -0.334674 2.221768 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<string name="filename" value="C:/Users/Asus/Desktop/Projetos/Render/Chess/chess/Scene/00001/pion_chess_0000_m000_0_000000.serialized"/>
+		<ref id="Glass-bl_mat-bsdf" name="bsdf"/>
+	</shape>
+	<shape id="Lamp-pointlight" type="sphere">
+		<emitter type="area" name="emitter">
+			<rgb value="636.619751 636.619751 636.619751" name="radiance"/>
+		</emitter>
+		<float name="radius" value="0.050000"/>
+		<bsdf type="diffuse" name="bsdf">
+			<rgb value="1.000000 1.000000 1.000000" name="reflectance"/>
+		</bsdf>
+		<transform name="toWorld">
+			<matrix value="-0.290865 -0.771101 0.566393 3.723787 -0.055189 0.604525 0.794672 2.348882 -0.955171 0.199883 -0.218391 1.028846 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+	</shape>
+	<bsdf id="Reflective-bl_mat-bsdf" type="blendbsdf">
+		<float name="weight" value="0.886835"/>
+		<bsdf type="blendbsdf" name="bsdf1">
+			<float name="weight" value="0.695876"/>
+			<bsdf type="conductor" name="bsdf1">
+				<string name="material" value="none"/>
+				<rgb value="0.259753 0.259753 0.259753" name="specularReflectance"/>
+			</bsdf>
+			<bsdf type="phong" name="bsdf2">
+				<rgb value="0.294956 0.294956 0.294956" name="specularReflectance"/>
+				<float name="exponent" value="95.000000"/>
+			</bsdf>
+		</bsdf>
+		<bsdf type="diffuse" name="bsdf2">
+			<rgb value="0.004239 0.004239 0.004239" name="reflectance"/>
+		</bsdf>
+	</bsdf>
+	<shape id="King_KingShape_0000_m000_0.000000" type="serialized">
+		<transform name="toWorld">
+			<matrix value="0.494690 0.000000 0.000000 0.428837 0.000000 0.494690 -0.000000 0.488162 0.000000 0.000000 0.494690 0.413278 0.000000 0.000000 0.000000 1.000000"/>
+		</transform>
+		<string name="filename" value="C:/Users/Asus/Desktop/Projetos/Render/Chess/chess/Scene/00001/KingShape_0000_m000_0_000000.serialized"/>
+		<ref id="Reflective-bl_mat-bsdf" name="bsdf"/>
+	</shape>
+</scene>

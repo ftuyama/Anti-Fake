@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<!-- saved from url=(0113)http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.fancyzoom.min.js"></script><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.jscrollpane.min.js"></script><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.mousewheel.js"></script><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.simplemodal.1.4.2.min.js"></script><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jQuery.cookie.js"></script><script src="http://hermes.3dtotal.com/pages/a.aspx?ZoneID=10&amp;Task=Get&amp;IFR=False&amp;PageID=40116&amp;SiteID=1&amp;Random=20160816125705427"></script><script src="http://hermes5.3dtotal.com/pages/a.aspx?ZoneID=9&amp;Task=Get&amp;IFR=False&amp;PageID=27389&amp;SiteID=1&amp;Random=20160816125705213"></script><script src="http://hermes4.3dtotal.com/pages/a.aspx?ZoneID=8&amp;Task=Get&amp;IFR=False&amp;PageID=95376&amp;SiteID=1&amp;Random=2016081612570568"></script><script src="http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=7&amp;Task=Get&amp;IFR=False&amp;PageID=62339&amp;SiteID=1&amp;Random=20160816125705570"></script><script src="http://hermes.3dtotal.com/pages/a.aspx?ZoneID=2&amp;Task=Get&amp;IFR=False&amp;PageID=88970&amp;SiteID=1&amp;Random=2016081612570513"></script><script src="http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=6&amp;Task=Get&amp;IFR=False&amp;PageID=37622&amp;SiteID=1&amp;Random=20160816125705395"></script><script src="http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=27&amp;Task=Get&amp;IFR=False&amp;PageID=37622&amp;SiteID=1&amp;Random=20160816125705292"></script><script src="http://hermes.3dtotal.com/pages/a.aspx?ZoneID=3&amp;Task=Get&amp;IFR=False&amp;PageID=83892&amp;SiteID=1&amp;Random=20160816125705141"></script>
+
+<title>// Create a glass with Blender and Mitsuba by Filippo Veniero  (page 1 of 2) / Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com</title><meta http-equiv="Content-Language" content="en"><meta name="description" content=" Filippo Veniero explains how use the Mitsuba render engine to obtain a physically accurate glass render in Blender, complete with water, bubbles and a straw."><meta name="keywords" content=" Glass, Water, Mitsuba, Blender, Render, Gimp, tutorial">		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 1848 -->
+<link rel="canonical" href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp">
+
+<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<!--<link rel="stylesheet" media="all" href="/default20160407.min.css" />-->
+<link rel="stylesheet" media="all" href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/default20160718.0.min.css">
+<style type="text/css">
+.nav-m {
+	color: #969BA3
+}
+
+.nav-m a, .nav-m :visited {
+	color: #cecece;
+	text-decoration: none;
+	padding-bottom: 4px;
+}
+
+.nav-m a:hover {
+	border-bottom: 2px solid #4396fd;
+	text-decoration: none;
+	color: #4396fd;
+}
+
+.nav-m-selected {
+	color: #cecece;
+	text-decoration: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+#navlist li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 20px;
+	margin-bottom: 1em;
+	font-face: Arimo, Arial, sans-serif;
+}
+
+#navlist li#navLast {
+	padding-right: 2px;
+	display: inline;
+	list-style-type: none;
+	padding-right: -20px;
+	margin-bottom: 1em;
+	float: right;
+	text-align: right;
+	font-size: 12px;
+}
+
+#navlist li a:hover, .navCurrent {
+	border-bottom: 2px solid #4396fd;
+	text-decoration: none;
+	color: #4396fd;
+}
+
+#navlist li a {
+	color: #cecece;
+	padding-bottom: 4px;
+}
+
+/* Rad on 09/03/2012 - add to favs */
+.gallerycatx a:hover div {
+	z-index: 10;
+	/* background:transparent url('/newsite/images/148x112.png') no-repeat; */
+	background: transparent url('/newsite/images/148x112_favoff.png')
+		no-repeat;
+	border: none;
+}
+
+div.bone:hover {
+	background: transparent url('/newsite/images/addfav_on.png') no-repeat;
+	border: none;
+}
+</style>
+<!-- Google FONTS, Rad on 27/07/2011 -->
+<link href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/css" rel="stylesheet" type="text/css">
+<!-- styles needed by jScrollPane -->
+<link type="text/css" href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.jscrollpane.css" rel="stylesheet" media="all">
+
+
+<style type="text/css">
+/* on 08/03/2012 css style changed - include this to main css branch */
+#member-tools ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	list-style-image: none;
+}
+
+#member-tools li {
+	display: inline;
+	margin-left: 10px;
+}
+</style>
+
+        <!-- Add "maximum-scale=1" to fix the Mobile Safari auto-zoom bug on orientation changes,
+			but keep in mind that it will disable user-zooming completely. Bad for accessibility. -->
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="https://d31qbv1cthcecs.cloudfront.net/atrk.js"></script><script type="text/javascript" async="" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/gas.min.js"></script><script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/jquery.min.js"></script>
+
+<!-- needed for popups before asynchro -->
+<script src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/crapLoader.min.js"></script><script src="data:text/javascript;base64,Y3JhcExvYWRlci5fb2x0PTI=" onload="crapLoader._oltCallback()"></script><script src="data:text/javascript;base64,Y3JhcExvYWRlci5fb2x0PTM="></script>
+
+
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    crapLoader.hijack({
+    debug: false,
+    parallel: true
+    });
+
+
+});
+</script>
+
+
+
+<style type="text/css">
+#basic-modal-content {
+	display: none;
+}
+
+#simplemodal-container {
+	height: 365px;
+	width: 520px;
+	margin-top: 10px;
+	background: #0D1216; /* 0D1216; 111518, 1A1E25, 1e2126*/
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	border: 2px solid #05CAFB;
+	padding: 12px;
+	/*
+                                            sand-border-radius:8px;
+                                            -moz-box-shadow:0 0 4px #565e69;
+                                            -webkit-box-shadow:0 0 4px #565e69;
+                                            box-shadow:0 0 4px #565e69;
+                                            sand-shadow 0 0 4px #565e69;
+                                            */
+	color: #626f7e;
+	font: 12px/14px Arial, sans-serif
+}
+
+#simplemodal-container a.modalCloseImg {
+	background: url(/newsite/images/x.png) no-repeat;
+	/* adjust url as required */
+	width: 25px;
+	height: 29px;
+	display: inline;
+	z-index: 3200;
+	position: absolute;
+	top: -15px;
+	right: -18px;
+	cursor: pointer;
+}
+
+#simplemodal-container .simplemodal-data {
+	padding: 8px;
+}
+
+#simplemodal-container code {
+	background: #141414;
+	border-left: 3px solid #65B43D;
+	color: #bbb;
+	display: block;
+	font-size: 12px;
+	margin-bottom: 12px;
+	padding: 4px 6px 6px;
+}
+
+#simplemodal-container a {
+	color: #ddd;
+}
+/*
+#simplemodal-container a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+*/
+#simplemodal-overlay {
+	background-color: #696969;
+}
+
+#simplemodal-container h3 {
+	color: #fff;
+}
+
+#simplemodal-container #emailN {
+	height: 26px;
+	color: #969ba3;
+	font: 13px/20px sans-serif;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #1a1c1f),
+		color-stop(0.5, #1d2228), color-stop(1, #1a1c1f));
+	background-image: -moz-linear-gradient(center top, #1a1c1f 0, #191c21 50%, #1a1c1f 100%);
+	border: 1px solid #2B2F35;
+}
+
+#simplemodal-container #signUp {
+	background: url('/newsite/images/sprites/spriteNewsletter.png' );
+	background-position: 0 -56px;
+	width: 144px;
+	height: 41px;
+	border: none;
+	display: inline;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	sand-shadow: none;
+}
+
+h3 {
+	color: #fff;
+	font: 26px/30px Arial, sans-serif;
+}
+</style>
+<!-- Tracker Analytics from Class-->
+<script type="text/javascript">
+var _gas = _gas || [];
+_gas.push(['_setAccount', 'UA-5959341-1']); // REPLACE WITH YOUR GA NUMBER
+_gas.push(['_setDomainName', '.3dtotal.com']); // REPLACE WITH YOUR DOMAIN
+_gas.push(['_trackPageview']);
+_gas.push(['_gasTrackForms']);
+_gas.push(['_gasTrackOutboundLinks']);
+_gas.push(['_gasTrackMaxScroll']);
+_gas.push(['_gasTrackDownloads']);
+_gas.push(['_gasTrackYoutube', {force: true}]);
+_gas.push(['_gasTrackVimeo', {force: true}]);
+_gas.push(['_gasTrackMailto']);
+
+(function() {
+var ga = document.createElement('script');
+ga.type = 'text/javascript';
+ga.async = true;
+ga.src = '//cdnjs.cloudflare.com/ajax/libs/gas/1.10.1/gas.min.js';
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(ga, s);
+})();
+</script> 
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"eV2+l1aE+GW1L7", domain:"3dtotal.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript>&lt;img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=eV2+l1aE+GW1L7" style="display:none" height="1" width="1" alt="" /&gt;</noscript>
+<!-- End Alexa Certify Javascript -->
+</head>
+
+<body style="background: url(/images/background_light.png);">
+
+  <!-- ## TOP Slider -->
+
+
+  <div id="basic-modal-content">
+    <h3>
+      Keep up-to-date with <span style="color: #05CAFB;">Free tutorials</span>!!
+    </h3>
+    <p>&nbsp;</p>
+    <p>Sign up to our twice-monthly newsletter today for the latest
+      tutorials, interviews and product information.</p>
+    <!-- <p>&nbsp;</p> -->
+    <!-- <p>&nbsp;</p> -->
+    <form name="subscribeN" enctype="application/x-www-form-urlencoded" method="get">
+      <p>     <input id="emailN" name="emailN" size="32" type="text" placeholder="enter email address here" class="rounded"> <input id="signUp" class="button" name="submit" type="button" value=" ">
+      </p>
+      <p>
+        <input id="also3p" name="also3p" type="checkbox" value="1"> Sign
+        me up to receive third-party emails from 3dtotal's partners,
+        too!
+      </p>
+      <p>
+
+
+      </p><div id="answerN" style="font: 13px/15px Arial, cursive; min-height: 5px; color: #fff;"></div>
+      <p></p>
+      <p>
+        - Latest news<br>- Exclusive Shop Offers<br>- Preview early content<br>- Plus much more
+      </p>
+      <p>&nbsp;</p>
+      <p>
+        Not Ready to take that step? OK, Why not just <a href="http://www.3dtotal.com/rss_feeder/" target="_blank">Subscribe
+          to the RSS Feed</a>
+      </p>  </form>
+
+  </div>
+
+  <!-- ### Top header -->
+
+<div style="width: 100%; background:url(http://www.3dtotal.com/images/background_dark.png) repeat; height: 160px; color:#FFFFFF;">
+<div style="width: 996px; margin: 0px auto; ">
+    <div id="headerTop" class="left" style="height: 87px;">
+        <div id="largeLogo" style="width: 270px;" class="left">
+            <a href="http://www.3dtotal.com/"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/3dtotal_logo_large.png" width="251" height="83" alt="3DTotal.com logo" style="margin-top: 15px;"></a>
+
+        </div>
+        <div id="largeSearch" style="width: 300px; height: 87px; line-height: 87px;" class="left">
+            <p>
+                </p><form id="top_search" name="gallery_search" style="z-index: 1; height: 39px; padding-left: 0; margin: 0; display: inline;" method="get" action="http://www.3dtotal.com/sitesearch.php">
+                <input name="searchsitetop" type="text" size="20" placeholder="  Search Site" value="" style=" margin-left: 7px;  padding:0; border: 1px solid #2b2f35; height: 27px; width: 200px;  margin-top: 7px; vertical-align: middle;" class="sitesearch comments_input">
+                <input type="hidden" name="topform" value="1">
+
+                                <input type="submit" value="" style="background:url(http://www.3dtotal.com/images/site-header/social-sprite.png); background-position: 0 -150px; width: 20px; height: 20px; border:0; line-height: 37px; vertical-align: middle; margin-top: 7px;" id="submitSearchTop">
+
+               
+                <!-- <input type="button" style=" background:url(http://www.3dtotal.com/images/mag_glass_off.jpg); width:37px; height:24px; border:0;  vertical-align: middle; margin-top: 6px; position: relative; left: -4px;" id="submitmag" /> -->
+                </form>
+
+
+            <p></p>
+        </div>
+        <div id="social" style="width:426px;" class="right">
+            <!-- split into 2 -->
+                        <div id="social-top" style="height: 43px; line-height: 43px;">
+                <div style="float: left; padding-left: 20px; line-height: 16px;" class="nav-m">
+                    <a href="http://www.3dtotal.com/about" style="margin: 1em;float: left; font-size: 12px;">About</a>
+                      <a href="http://www.3dtotal.com/index_page.php?id=2" style="margin: 1em;float: left; font-size: 12px;">Advertising Info</a>
+                    <a href="http://www.3dtotal.com/index_page.php?id=43" style="margin: 1em;float: left; font-size: 12px;">Cookies Policy</a>
+
+                </div>
+
+                <div style="text-align: right; " class="right">
+                    <a href="http://www.facebook.com/3DTotal" target="_blank" style="float: left; width: 30px;" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;socialIcons&#39;,&#39;facebook&#39;,&#39;http://www.facebook.com/3DTotal&#39;,1]);">
+                        <p class="icoSocial" id="ico0" style="background:url(http://www.3dtotal.com/images/site-header/social-sprite.png); background-position: 0 0px; width: 13px; height: 24px; "></p>
+                    </a>
+                    <a href="http://pinterest.com/3DTotal" target="_blank" style="float: left; width: 30px;" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;socialIcons&#39;,&#39;pinterest&#39;,&#39;http://pinterest.com/3DTotal&#39;,1]);">
+                        <p class="icoSocial" id="ico1" style="background:url(http://www.3dtotal.com/images/site-header/social-sprite.png); background-position: 0 -50px; width: 19px; height: 24px; "></p>
+                    </a>
+                    <a href="http://twitter.com/3dtotal" target="_blank" style="float: left; width: 30px;" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;socialIcons&#39;,&#39;twitter&#39;,&#39;http://twitter.com/3dtotal&#39;,1]);">
+                        <p class="icoSocial" id="ico2" style="background:url(http://www.3dtotal.com/images/site-header/social-sprite.png); background-position: 0 -409px; width: 27px; height: 21px; "></p>
+                    </a>
+                    <a href="http://www.3dtotal.com/rss_feeder/" target="_self" style="float: left; margin-left: 9px; width: 30px;" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;socialIcons&#39;,&#39;rss&#39;,&#39;http://www.3dtotal.com/rss_feeder/&#39;,1]);">
+                        <p class="icoSocial" id="ico3" style="background:url(http://www.3dtotal.com/images/site-header/social-sprite.png); background-position: 0 -100px; width: 25px; height: 24px; "></p>
+                    </a>
+
+
+                </div>
+
+            </div>
+            <div style="text-align: right; padding-top: 0px; clear: both;" class="right">
+
+                    <a href="http://www.3dtotal.com/newsletter/" style="font: 12px/12px Arial, sans-serif;" class="css3now" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;newsSignUp&#39;,&#39;topNavR0710&#39;,&#39;/newsletter/&#39;,1]);">
+                        <span>Newsletter Sign-Up</span>
+                    </a>
+
+            </div>
+
+            <!--
+            <div style="margin-top: 10px; text-align: right; clear: both;" class="right nav-m">
+                    <a href="http://www.3dtotal.com/index_page.php?id=43" style="font-size: 12px;">Cookies Policy </a>
+            </div>
+            <div style="text-align: right; padding-top: 40px; clear: both;" class="right nav-m">
+                <a href="/members/indexDev.php">Register / Login</a>
+            </div>
+            -->
+
+        </div>
+
+
+    </div>
+
+    <div id="headerBottom" class="left" style="height: 63px; clear:both; width: 100%; line-height:63px; padding-top: 10px;">
+        <div id="navMain">
+            <ul id="navlist">
+                <li><a href="http://shop.3dtotal.com/" target="_blank" class="shopcss3" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;shopLink&#39;,&#39;topNavR0710&#39;,&#39;http://shop.3dtotal.com&#39;,1]);">Products</a></li>
+		                                <li><a href="http://www.3dtotal.com/tutorials/" class="navCurrent" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;tutsLink&#39;,&#39;topNav&#39;, &#39;/tutorials/&#39;,1]);">Free Tutorials</a></li>
+                <li><a href="http://www.3dtotal.com/index_archive.php" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;newsLink&#39;,&#39;topNav&#39;,&#39;/index_archive.php&#39;,1]);">  News &amp; Features</a></li>
+                <li><a href="http://freetextures.3dtotal.com/" target="_blank" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;freeTexturesLink&#39;,&#39;topNav&#39;,&#39;http://freetextures.3dtotal.com&#39;,1]);">Free Textures</a></li>
+                <li><a href="http://www.3dtotal.com/galleries" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;gallLink&#39;,&#39;topNav&#39;,&#39;/galleries&#39;,1]);">Galleries</a></li>
+                <li><a href="http://forums.3dtotal.com/" target="_blank" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;forumsLink&#39;,&#39;topNav&#39;,&#39;http://forums.3dtotal.com&#39;,1]);">Forums</a></li>
+                <li><a href="https://3dtotal.com/form_enter.php" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;submitLink&#39;,&#39;topNav&#39;,&#39;/form_enter.php&#39;,1]);">How to Submit</a></li>
+                <li><a href="http://www.2dartistmag.com/" target="_blank" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;magazineLink&#39;,&#39;topNav&#39;,&#39;http://www.2dartistmag.com&#39;,1]);">2dartist Magazine</a></li>
+		                <!--<li><a href="http://www.3dtotal.com/index_page.php?id=1">About</a>-->
+		<li id="navLast"><a href="https://3dtotal.com/members/indexDev.php">Register / Login</a></li>
+            </ul>
+
+        </div>
+        <div style="position: relative; top: -110px; left: 68%; z-index: 0; clear: both; height: 53px;" class="left">
+		                	<a href="http://www.2dartistmag.com/" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;love2D&#39;,&#39;topNav&#39;,&#39;http://www.2dartistmag.com&#39;,1]);">
+	                    <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/2dartist_arrow_link.png" alt="layerpaint shortcut" border="0" width="103" height="53">
+	                </a>
+		        </div>
+    </div>
+</div>
+</div>
+
+      <div style="width: 100%; /* background: url(/images/stripes-bg.png); */ float: left;">
+    <div style="margin-left: auto; margin-right: auto; width: 999px;">
+      <!-- top news box with glowing effect -->
+
+            <!-- <div style="background:#CCFF00; margin-top: 10px;">:::: Spacer ::::</div> -->
+      <div style="width: 804px; float: left; margin-top: 10px;">
+        <!--  Top Letter box -->
+        <div style="height: 100px; text-align: center; padding-top: 11px;" class="shadow2">
+          <div>
+                    <div class="pub" id="LT" style="">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes.3dtotal.com/pages/a.aspx?ZoneID=3&Task=Get&IFR=False&PageID=83892&SiteID=1&Random=20160816125705141', 'LT');
+    });
+  </script>
+</div>
+                    </div>
+
+        </div>
+        <!-- Galleries news panel starts here  -->
+        <!-- NEWS 2 - second NEWS block - 4 larger images -->
+
+<div style="height: 80px; padding-top: 8px; color: #fff; font-family: Arial, Helvetica, sans-serif;">
+  <div>
+          <div id="gc1">
+          <a href="http://www.3dtotal.com/tutorials/3ds+Max/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">3ds Max</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">913 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc2">
+          <a href="http://www.3dtotal.com/tutorials/Maya/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">Maya</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">328 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc3">
+          <a href="http://www.3dtotal.com/tutorials/ZBrush/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">ZBrush</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">461 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc4">
+          <a href="http://www.3dtotal.com/tutorials/Blender/">
+            <div class="selected-software" style="color: rgb(255, 255, 255); background-image: url(&quot;/newsite/images/blank_box_blue.png&quot;);">
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">Blender</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">50 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc5">
+          <a href="http://www.3dtotal.com/tutorials/MODO/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">MODO</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">36 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc6">
+          <a href="http://www.3dtotal.com/tutorials/LightWave/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">LightWave</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">69 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc7">
+          <a href="http://www.3dtotal.com/tutorials/CINEMA+4D/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 10pt/10pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">CINEMA 4D</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">47 Tuts</span>
+            </div>
+          </a>
+      </div>
+          <div id="gc8">
+          <a href="http://www.3dtotal.com/tutorials/Photoshop/">
+            <div>
+              <span style="display:block; width: 77px; position: relative; top: 24px; z-index: 1; font: 11pt/11pt &#39;Arimo&#39;,Arial,sans-serif; margin-left: 7px; text-align:center; ">Photoshop</span>
+              <span style="display:block; width: 77px; position: relative; top: 43px; z-index: 1; font-size: 10pt; margin-left: 7px; text-align:center; color: #4396FD;">1007 Tuts</span>
+            </div>
+          </a>
+      </div>
+    <div id="gcbr">
+		<a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?&amp;roPos=2">
+          <div></div>
+        </a>
+      </div>
+    
+  </div>
+</div>
+
+<!--</div>
+        </div>-->
+
+        <!-- #### Main Middle Column - Main Content -->
+        <div style="width: 802px; height: auto; padding: 0 0 5px 0; float: left;" class="shadow2">
+          <!-- search bar for images -->
+          <div style="font: 14px/33px Arial, Helvetica, sans-serif; padding-left: 0; margin-left: 0; width: 100%; height: auto; color: #cacaca; float: left; position: relative; top: 0;" class="rounded">
+            <div style="position: relative; margin: 0; width: 37px; float: left; background: transparent url(/images/left_off.png) 0 0 no-repeat;" id="go-back">&nbsp;</div>
+
+            <div style="width: 750px; height: 33px; float: left; background: transparent url(/images/bar-background-1px.png) 0 0 repeat-x;">
+              <div style="float: left; border: 0; padding-top: 7px; font: bold 12px/18px Arial, Helvetica, sans-serif; color: #7c8c9f; width: 424px;">
+                <!-- here submit button -->
+                <div style="float: left; height: 22px; margin: -9px 0px;">
+                  <a href="http://www.3dtotal.com/form_enter.php" target="_blank"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/submit_tutorialoff.png" height="33" width="137" alt="submit tutorial" border="0" class="gallery_submit_button"></a>
+                </div>
+
+
+                <div style="margin: 0 auto; width: 80%; text-align: center;">
+                  <!-- Paginator New -->
+ <span style="width: 10px; padding: 0 1px; color: #4396FD; text-decoration: underline;">1</span>  |  <span class="tutorial-link"><a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page=2">2</a></span>     </div>
+              </div>
+              <div style="float: right; border: 0; padding: 0;">
+                <form name="images_search" style="z-index: 1; padding: 0; margin: 0;" method="get" action="http://www.3dtotal.com/tutorials">
+                  <input type="hidden" name="sort" value="date"> <input type="hidden" name="cat" value=""> <input type="hidden" name="order" value="1"> <input type="hidden" name="detailsoff" value="">
+                  <input name="search" type="text" size="16" value="" placeholder="Search Tutorials" style="background-color: transparent; border: 1px solid #2b2f35; height: 23px; margin-top: 3px; vertical-align: middle; float: left;" class="sitesearch comments_input"> <input type="submit" value=" " style="background: url(/images/mag_glass_off.jpg); width: 37px; height: 24px; border: 0;" id="submitgallery">
+                </form>
+              </div>
+
+            </div>
+            <div style="margin-left: 0px; width: 7px; height: 33px; float: left; background: transparent url(/images/Bar_Right_Bit.png) 0 0 no-repeat;">
+            </div>
+          </div>
+          <!-- Working on 23/09/2011 - main tutorial area aligning etc -->
+
+          <div style="font: 14px/26px Arial, Helvetica, sans-serif; padding: 2px; margin-left: 22px; margin-top: 26px; width: 752px; color: #cacaca; float: left;" class="rounded">
+
+            <!-- start of the black area -->
+
+            <div style="float: left; height: auto; background: #000; padding: 4px;" class="rounded">
+
+              <!-- second info row -->
+              <div style="float: right; height: 22px;">
+<a name="favsx"></a><div id="favs" style="font: 14px/19px Arimo, Arial, sans-serif;"><a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp#welcome" id="favsUrl"><div style="float: left; margin: 0 2px; vertical-align: middle; min-width: 19px; height: auto; background: url(/newsite/images/png/membersPng.png) no-repeat center center; background-position: 0 -233px; width: 18px; height: 18px;">&nbsp;</div><span id="favsResult"> Add to Favourites</span></a></div></div>
+              <div style="float: left; font: 24px/24px &#39;Arimo&#39;, sans-serif; height: auto; width: 600px;">
+          	Create a glass with Blender and Mitsuba</div>
+              <br>
+              <div style="float: left; font: 18px/20px &#39;Arimo&#39;, sans-serif;">
+          	By  <a href="http://www.3dtotal.com/sitesearch.php?searchsitetop=Filippo+Veniero&amp;topform=1">Filippo Veniero</a>
+
+</div>
+<div style="float:right; font: 12px/20px &#39;Arimo&#39;, sans-serif; margin-right: 6px;">        Web: <a href="http://www.ifilgood.it/" target="_blank">www.ifilgood.it</a>
+
+</div>
+
+<div style="width: 770px; float: left; display: block; margin: 2px auto;">
+              <div style="float: left; margin-right: 5px; margin-top: 0px; width: 190px; font: 14px/16px &#39;Arimo&#39;, sans-serif;">
+
+                <div style="float: left; margin-top: 6px; margin-right: 4px; width: 94px; font: 14px/16px &#39;Arimo&#39;, sans-serif;" id="yrating">| Your Rating:</div>
+                <div style="float: left; background: #1d2228; margin-top: 4px; width: 75px; padding: 1px 8px 1px 8px; height: 18px;" class="rounded rounded_button" title="Click stars to rate" id="ratingdiv"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" id="1" class="rating star" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" id="2" class="rating star" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" id="3" class="rating star" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" id="4" class="rating star" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" id="5" class="rating star" valign="bottom"> </div>
+              </div>
+              <div style="float: left; margin-right: 5px; margin-top: 6px; font: 14px/16px &#39;Arimo&#39;, sans-serif; color: #4396FD;">
+          	(9 Votes)</div>
+              <div style="float: left; margin-right: 5px; margin-top: 6px; font: 14px/16px &#39;Arimo&#39;, sans-serif; color: #4396FD;">
+          	 | 40609 Views          </div>
+              <div style="float: left; margin-right: 5px; margin-top: 6px; font: 14px/16px &#39;Arimo&#39;, sans-serif; color: #4396FD;">
+          	| 1 <a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp#readers_comments">Comments</a>          </div>
+              <div style="float: right; margin-right: 5px; margin-top: 2px; font: 14px/16px &#39;Arimo&#39;, sans-serif;">
+                | <a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp#readers_comments"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/comments.png" alt="Comments"> <span style="color: #4396FD;">1</span></a>
+              </div>
+            </div>
+            <div style="float: right; margin-right: 5px; margin-top: 5px; font: 14px/16px &#39;Arimo&#39;, sans-serif;">
+          Date Added: 10th March 2014          </div>
+
+
+            <div style="width: 100%; float: left; padding-top: 4px; background: #000; margin: 4px 0 4px 0;">
+              <div style="width: 410px; float: left; padding: 0 4px 4px 4px; font: 14px/16px &#39;Arimo&#39;, sans-serif; background: #000;">
+                <div style="float: left; width: 100px;">Software used:</div>
+                <div style="float: left; width: 310px;">
+          <a href="http://www.3dtotal.com/tutorials/Blender/">Blender</a>      </div>
+
+              </div>
+
+	      <div style="width: 600px; float: left; padding: 0 4px 4px 4px; font: 14px/16px &#39;Arimo&#39;, sans-serif; background: #000;">
+		<div style="float: left; width: 100px;">Keywords:</div>
+		<div>
+			<a href="http://www.3dtotal.com/tutorials/?search=Glass">Glass</a>,   <a href="http://www.3dtotal.com/tutorials/?search=Water">Water</a>,   <a href="http://www.3dtotal.com/tutorials/?search=Mitsuba">Mitsuba</a>,   <a href="http://www.3dtotal.com/tutorials/?search=Blender">Blender</a>,   <a href="http://www.3dtotal.com/tutorials/?search=Render">Render</a>,   <a href="http://www.3dtotal.com/tutorials/?search=Gimp">Gimp</a>  		</div>
+	      </div>
+
+              <div id="addThis" style="float: left; width: 100%; margin-top: 8px;">
+	      	        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=3dtotalcom" async="async"></script>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <div class="addthis_sharing_toolbox"></div>
+
+              </div>
+
+              <!--<div id="addThis"
+                style="float: left; width: 100%; margin-top: 8px;">
+                <div class="addthis_toolbox addthis_default_style">
+                  <a class="addthis_button_facebook_like"
+                    fb:like:layout="button_count"></a> <a
+                    class="addthis_button_tweet"></a> <a
+                    class="addthis_button_pinterest_pinit"
+                    pi:pinit:layout="horizontal"
+                    pi:pinit:url="http://www.addthis.com/features/pinterest"
+                    pi:pinit:media="https://www.addthis.com/cms-content/images/features/pinterest-lg.png"></a>
+                  <a class="addthis_button_google_plusone"
+                    g:plusone:size="medium"></a>
+                </div>
+                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true,"pubid":'3dtotalcom'};</script>
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#async=1"></script>
+		<script type="text/javascript">
+			$(document).ready(function loadAddThis() {
+				addthis.init();
+				addthis.toolbox('.addthis_toolbox');
+			});
+		</script>
+              </div>-->
+            </div>
+
+</div>
+
+
+
+
+<!-- end of black area -->
+          <!-- Main Tutorial CONTENT  -->
+          <div style="width: 100%; float: left; background: #191C21; margin: 0; padding: 0;">
+
+        <div style="width: 95%; font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto; text-align: center; padding: auto; "><div style="display: inline-block;"><div><a href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_render_r.jpg" class="zoom"><img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_render_r.jpg" alt="1848_tid_render_r.jpg" title="id_render_r.jpg" width="700px"><img src="http://www.3dtotal.com/newsite/scripts/resources/zoom.png" style="position: absolute; top: 612px; left: 210.984px; display: block;"></a></div><div style="font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto;">  </div></div></div>
+<br>
+<h2>Filippo Veniero explains how use the Mitsuba render engine to obtain a physically accurate glass render in Blender, complete with water, bubbles and a straw.</h2>
+<br>
+<a href="http://www.ifilgood.it/" target="_blank"><img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_fillipo_veniero.jpg" alt="1848_tid_fillipo_veniero.jpg" width="700" title="d_fillipo_veniero.jpg"></a><br>
+<br>
+<strong>In this tutorial I'll show you how to use <a href="https://www.mitsuba-renderer.org/" target="_blank">Mitsuba</a> in <a href="http://www.blender.org/" target="_blank">Blender</a> to create a physically correct glass cup. Mitsuba is an open source, physically-based renderer, runs on Linux, Mac OS X, Windows and is extremely modular. Many rendering techniques are available (direct illumination, path tracer, bidirectional path trace, photon map and so on). It supports volume rendering and the most commonly used scattering models (rough glass, plastic, metal).<br>
+<br>
+Download the Mitsuba <a href="https://www.mitsuba-renderer.org/download.html" target="_blank">software</a> and the <a href="https://www.mitsuba-renderer.org/repos/exporters/mitsuba-blender/archive/tip.zip" target="_blank">plug-in</a> for Blender. Now install Mitsuba, unzip the plug-in and copy the folder called Mitsuba into Blender/2.69/scripts/addons.</strong><br>
+<br>
+<h2><div id="MPUwrapper" style="height: 260px; margin: 1em auto; text-align: center; width: 304px;/*width: 606px;*/ "><div id="MPU1" style="float: left; width: 300px"><script type="text/javascript">$(document).ready(function() {crapLoader.loadScript('http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=27&Task=Get&IFR=False&PageID=37622&SiteID=1&Random=20160816125705292', 'MPU1');});</script></div></div>Modeling the glass</h2>
+Open Blender and enable Mitsuba (File &gt; User Preferences &gt; Addons). Change the render engine from Blender to Mitsuba and write the path of the executable file in the Executable Path field.<br>
+<br>
+Delete the default cube and add a circle of 16 vertices. Enter Edit mode and extrude along the Z axis and scale just a little. Close the bottom of the glass and model the inside, then add Subdivision Surface modifier (level 2) and set the Shading to smooth. Call this mesh 'Glass'.<br>
+<br>
+<div style="width: 95%; font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto; text-align: center; padding: auto; "><div style="display: inline-block;"><div><a href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_1.jpg" class="zoom"><img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_1.jpg" alt="1848_tid_1.jpg" title="id_1.jpg" width="350px"></a></div><div style="font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto;">  </div></div> <div style="display: inline-block;"><div><a href="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_1_1.jpg" class="zoom"><img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_1_1.jpg" alt="1848_tid_1_1.jpg" title="id_1_1.jpg" width="347px"></a></div><div style="font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto;">  </div></div></div>
+<div style="width: 95%; font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto; text-align: center; padding: auto; ">Modeling the glass</div>
+<br>
+<div class="adgen3d" style="margin: 5px auto; text-align: center; padding: auto; "><a href="http://shop.3dtotal.com/catalogsearch/advanced/result/?name=swordmaster" target="_blank"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/swordmaster.jpg" width="600" height="100" border="0" alt="Swordmaster_eBook" title="Swordmaster_eBook"></a></div>
+<br>
+<h2>Create the water</h2>
+In Edit mode, select the vertices inside the glass and separate them  ( P &gt; by selection ). Call this part 'water'. Now select the vertices of the first edge loop, duplicate and separate them: call this new mesh 'water_top'. Close them by extruding and scaling and don't forget the <a href="http://en.wikipedia.org/wiki/Meniscus" target="_blank">meniscus</a> (the curve in the upper surface of the liquid against the side of the glass). Check the mesh's Normals ? it's very important that they are consistent and face the same direction!<br>
+<br>
+<img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_2.jpg" alt="1848_tid_2.jpg" width="700" title="id_2.jpg">
+<br>
+<img style="margin:5px auto; border:2px solid black; max-width: 736px; display: block;" src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/1848_tid_2_normals.jpg" alt="1848_tid_2_normals.jpg" width="700" title="id_2_normals.jpg">
+<div style="width: 95%; font: 14px/14px Arial, Helvetica, sans-serif; margin: 5px auto; text-align: center; padding: auto; ">Create water</div>
+<br>
+<br>
+<br>
+<h2><a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page=2" style="float: right; font-size: 18px;" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;tutorials&#39;,&#39;nextPage&#39;,&#39;from-1&#39;,2]);">continued on next page &gt;</a>	</h2></div>
+
+
+
+
+        </div>
+
+        <!-- Bottom paginator -->
+<div style="padding-left: 0; margin-left: 0; width: 100%; height: auto; color: #cacaca; float: left; position: relative; top: 0;" class="rounded">
+          <div style="position: relative; margin: 0; width: 37px; height: 50px; float: left; background: transparent url(/images/left_off_30091.png) 0 0 no-repeat;" class="pag-left">&nbsp;</div>
+
+          <div style="margin-top: 0px; width: 728px; height: 50px; float: left; background: transparent url(/images/bar-background-1px_30091.png) 0 0 repeat-x;">
+            <div style="width: 100%; float: left; font: 22px/50px Arial, Helvetica, sans-serif; color: #7c8c9f; text-align: center;">
+              <!-- Paginator New -->
+ <span style="width: 10px; padding: 0 1px; color: #4396FD; text-decoration: underline;">1</span>  |  <span class="tutorial-link"><a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page=2" onmousedown="_gaq.push([&#39;_trackEvent&#39;,&#39;tutorials&#39;,&#39;bottomPaginator&#39;,&#39;from-1&#39;,2]);">2</a></span> </div>
+
+          </div>
+          <div style="margin-left: 0px; width: 37px; height: 50px; float: left; background: transparent url(&#39;/images/right_off_3009.png&#39;) 0 0 no-repeat;" class="pag-right"></div>
+        </div>
+
+      </div>
+      <!-- #### EOF Main Middle Column - Main Content -->
+
+
+<!-- #### Related Tutorials,  related starts here -->
+<div style="width: 794px; float: left; ; height: 330px; padding: 5px;" class="shadow2">
+  <div style="font: 14px/26px Arial, Helvetica, sans-serif; margin: 0 auto; padding-left: 6px; width: 782px; height: 26px; color: #cacaca; background: #000000; text-align: center;" class="rounded">
+    <span style="font: 14px/16px &#39;Arimo&#39;, sans-serif;">Related Tutorials</span>
+  </div>
+  <!-- Image rotator for RELATED items - pics on keywords? -->
+  <div style="height: 283px; width: 781px; margin-left: auto; margin-right: auto; margin-top: 8px;">
+                  <!-- # 0 box -->
+        <div class="across" id="a1">
+          <div style="background: url(&#39;http://www.3dtotal.com/admin/new_cropper/tutorial_188_142/391_tid_tutorial.jpg&#39;) center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;">
+          <!-- <div style="background: url('http://www.3dtotal.com/admin2/front_page/offsite/thumb/391.jpg') center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;"> -->
+          <a href="http://www.3dtotal.com/tutorial/391-the-dielectric-material-shader-and-glass-physics-phenomena-3ds-max-by-rick-timmons-water-texture"><div style="width: 186px; height: 141px;"></div></a>
+        </div>
+        <div style="height: 100px;">
+                    <p style="margin: 2px; color: #fff; margin-bottom: 4px;"><a href="http://www.3dtotal.com/tutorial/391-the-dielectric-material-shader-and-glass-physics-phenomena-3ds-max-by-rick-timmons-water-texture">The Dielectric Material Shader and Glass Physics Phenomena</a></p>
+          <p style="margin: 2px; color: #fff; margin-bottom: 4px;">
+	    by <a href="http://www.3dtotal.com/tutorials/?search=Rick+Timmons">Rick Timmons</a>
+                          <small><br>published on 2009-12-09</small>
+            	  </p>
+	            <p style="width: 190px; margin: 2px; color: #626f7e;">            <span style="color: #4396FD;">Keywords:</span> glass, water, texture,          </p>
+        </div>
+        <div style="float: left; pading-top: 4px; position: relative; bottom: -2px; height: 28px; font: 10px/10px sans-serif;">
+          <div style="float: left; margin: 3px 9px 0 2px;">
+            <a href="http://www.3dtotal.com/tutorial/391-the-dielectric-material-shader-and-glass-physics-phenomena-3ds-max-by-rick-timmons-water-texture"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/right-arrow-button.gif" height="20" width="21" border="0" alt="Go to tutorial" id="ai0"></a>
+          </div>
+          <div style="float: left; width: 140px; float: right;">
+            <div style="float: left; margin-left: 2px;">
+              <!-- Stars -->
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_grey.png" width="15" height="14" border="0" alt="rating star none" valign="bottom"> <span style="line-height: 14px;">(7)</span>            </div>
+            <div style="float: left; margin-left: 2px; margin-top: 3px; color: #4396fd;">
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/speach-bubble.gif" title="Comments" alt="Comments" width="14" height="10" border="0"> 1 <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/blue_eye_01.png" width="14" height="10" border="0" alt="Views" title="Views" style="margin-left: 10px;"> 73099
+            </div>
+          </div>
+        </div>
+      </div>
+                    <!-- # 1 box -->
+        <div class="across" id="a2">
+          <div style="background: url(&#39;http://www.3dtotal.com/admin/new_cropper/tutorial_188_142/2030_tid_tutorial.jpg&#39;) center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;">
+          <!-- <div style="background: url('http://www.3dtotal.com/admin2/front_page/offsite/thumb/2030.jpg') center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;"> -->
+          <a href="http://www.3dtotal.com/tutorial/2030-fx-particles-and-dynamics-in-maya-by-mike-zugschwert-water-dynamic"><div style="width: 186px; height: 141px;"></div></a>
+        </div>
+        <div style="height: 100px;">
+                    <p style="margin: 2px; color: #fff; margin-bottom: 4px;"><a href="http://www.3dtotal.com/tutorial/2030-fx-particles-and-dynamics-in-maya-by-mike-zugschwert-water-dynamic">FX Particles and Dynamics in Maya</a></p>
+          <p style="margin: 2px; color: #fff; margin-bottom: 4px;">
+	    by <a href="http://www.3dtotal.com/tutorials/?search=Mike+Zugschwert">Mike Zugschwert</a>
+                          <small><br>published on 2015-05-27</small>
+            	  </p>
+	            <p style="width: 190px; margin: 2px; color: #626f7e;">            <span style="color: #4396FD;">Keywords:</span> maya, water, particles, dynamic          </p>
+        </div>
+        <div style="float: left; pading-top: 4px; position: relative; bottom: -2px; height: 28px; font: 10px/10px sans-serif;">
+          <div style="float: left; margin: 3px 9px 0 2px;">
+            <a href="http://www.3dtotal.com/tutorial/2030-fx-particles-and-dynamics-in-maya-by-mike-zugschwert-water-dynamic"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/right-arrow-button.gif" height="20" width="21" border="0" alt="Go to tutorial" id="ai1"></a>
+          </div>
+          <div style="float: left; width: 140px; float: right;">
+            <div style="float: left; margin-left: 2px;">
+              <!-- Stars -->
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_grey.png" width="15" height="14" border="0" alt="rating star none" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_grey.png" width="15" height="14" border="0" alt="rating star none" valign="bottom"> <span style="line-height: 14px;">(5)</span>            </div>
+            <div style="float: left; margin-left: 2px; margin-top: 3px; color: #4396fd;">
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/speach-bubble.gif" title="Comments" alt="Comments" width="14" height="10" border="0"> 0 <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/blue_eye_01.png" width="14" height="10" border="0" alt="Views" title="Views" style="margin-left: 10px;"> 12212
+            </div>
+          </div>
+        </div>
+      </div>
+                    <!-- # 2 box -->
+        <div class="across" id="a3">
+          <div style="background: url(&#39;http://www.3dtotal.com/admin/new_cropper/tutorial_188_142/2166_tid_tutorial.jpg&#39;) center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;">
+          <!-- <div style="background: url('http://www.3dtotal.com/admin2/front_page/offsite/thumb/2166.jpg') center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;"> -->
+          <a href="http://www.3dtotal.com/tutorial/2166-leonard-edgar-making-of-photoshop-blender-zbrush-by-julien-kaspar-character"><div style="width: 186px; height: 141px;"></div></a>
+        </div>
+        <div style="height: 100px;">
+                    <p style="margin: 2px; color: #fff; margin-bottom: 4px;"><a href="http://www.3dtotal.com/tutorial/2166-leonard-edgar-making-of-photoshop-blender-zbrush-by-julien-kaspar-character">Leonard &amp; Edgar – Making of</a></p>
+          <p style="margin: 2px; color: #fff; margin-bottom: 4px;">
+	    by <a href="http://www.3dtotal.com/tutorials/?search=Julien+Kaspar">Julien Kaspar</a>
+                          <small><br>published on 2016-03-23</small>
+            	  </p>
+	            <p style="width: 190px; margin: 2px; color: #626f7e;">            <span style="color: #4396FD;">Keywords:</span> Julien Kaspar, Blender, character, making of          </p>
+        </div>
+        <div style="float: left; pading-top: 4px; position: relative; bottom: -2px; height: 28px; font: 10px/10px sans-serif;">
+          <div style="float: left; margin: 3px 9px 0 2px;">
+            <a href="http://www.3dtotal.com/tutorial/2166-leonard-edgar-making-of-photoshop-blender-zbrush-by-julien-kaspar-character"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/right-arrow-button(1).gif" height="20" width="21" border="0" alt="Go to tutorial" id="ai2"></a>
+          </div>
+          <div style="float: left; width: 140px; float: right;">
+            <div style="float: left; margin-left: 2px;">
+              <!-- Stars -->
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_grey.png" width="15" height="14" border="0" alt="rating star none" valign="bottom"> <span style="line-height: 14px;">(5)</span>            </div>
+            <div style="float: left; margin-left: 2px; margin-top: 3px; color: #4396fd;">
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/speach-bubble.gif" title="Comments" alt="Comments" width="14" height="10" border="0"> 2 <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/blue_eye_01.png" width="14" height="10" border="0" alt="Views" title="Views" style="margin-left: 10px;"> 6253
+            </div>
+          </div>
+        </div>
+      </div>
+                    <!-- # 3 box -->
+        <div class="across" id="a4">
+          <div style="background: url(&#39;http://www.3dtotal.com/admin/new_cropper/tutorial_188_142/2031_tid_tutorial.jpg&#39;) center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;">
+          <!-- <div style="background: url('http://www.3dtotal.com/admin2/front_page/offsite/thumb/2031.jpg') center center  no-repeat; -moz-background-size: 186px 141px; background-size: 186px 141px;"> -->
+          <a href="http://www.3dtotal.com/tutorial/2031-v-ray-30-new-features-rt-explained-by-paul-hatton-features-render"><div style="width: 186px; height: 141px;"></div></a>
+        </div>
+        <div style="height: 100px;">
+                    <p style="margin: 2px; color: #fff; margin-bottom: 4px;"><a href="http://www.3dtotal.com/tutorial/2031-v-ray-30-new-features-rt-explained-by-paul-hatton-features-render">V-Ray 3.0: New Features: V-Ray RT explained</a></p>
+          <p style="margin: 2px; color: #fff; margin-bottom: 4px;">
+	    by <a href="http://www.3dtotal.com/tutorials/?search=Paul+Hatton">Paul Hatton</a>
+                          <small><br>published on 2015-05-27</small>
+            	  </p>
+	            <p style="width: 190px; margin: 2px; color: #626f7e;">            <span style="color: #4396FD;">Keywords:</span> v-ray, new, features, render          </p>
+        </div>
+        <div style="float: left; pading-top: 4px; position: relative; bottom: -2px; height: 28px; font: 10px/10px sans-serif;">
+          <div style="float: left; margin: 3px 9px 0 2px;">
+            <a href="http://www.3dtotal.com/tutorial/2031-v-ray-30-new-features-rt-explained-by-paul-hatton-features-render"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/right-arrow-button.gif" height="20" width="21" border="0" alt="Go to tutorial" id="ai3"></a>
+          </div>
+          <div style="float: left; width: 140px; float: right;">
+            <div style="float: left; margin-left: 2px;">
+              <!-- Stars -->
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_blue.png" width="15" height="14" border="0" alt="rating star full" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_greyblue.png" width="15" height="14" border="0" alt="rating star half" valign="bottom"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/rating_grey.png" width="15" height="14" border="0" alt="rating star none" valign="bottom"> <span style="line-height: 14px;">(5)</span>            </div>
+            <div style="float: left; margin-left: 2px; margin-top: 3px; color: #4396fd;">
+              <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/speach-bubble.gif" title="Comments" alt="Comments" width="14" height="10" border="0"> 0 <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/blue_eye_01.png" width="14" height="10" border="0" alt="Views" title="Views" style="margin-left: 10px;"> 22382
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+<!-- #### EOF Related IMAGES and ITEMS -->
+</div>
+
+
+
+<!-- ##### Comments section starts here -->
+<!-- USER COMMENTS STARTS HERE -->
+
+<div id="readers_comments" style="width: 794px; float: left; height: auto; padding: 5px" class="shadow2">
+  <div style="font: 14px/26px Arial, Helvetica, sans-serif; margin: 0px auto; padding-left: 6px; width: 782px; height: 26px; color: #cacaca; background: #000000; text-align: center;" class="rounded">
+    <span style="font: 14px/16px &#39;Arimo&#39;, sans-serif;">Readers Comments
+      (Newest on Top)</span>
+  </div>
+  <div style="height: auto; width: 780px; float: left; margin-left: auto; margin-right: auto; margin-top: 8px;">
+
+            <div style="width: 100%; padding: 3px; background-color: #343940; min-height: 80px; height: auto; margin-top: 5px; white-space: normal;">
+          <div style="width: 74px; height: 74px; float: left; margin: 2px;">
+         	            <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/no_profile_pic.jpg" border="0" padding="0" alt="avatar" height="74" width="74">
+         	         </div>
+          <div style="width: 660px; height: auto;">
+         	    		<span style="color: #4396FD; font: 13px/16px &#39;ArimoBold&#39;, Helvetica, sans-serif;">Deon</span> on Wed, 19 March 2014 11:58am <br>
+
+            <span style="font: 12px/20px Arial, Helvetica, sans-serif">Excellent esp considering its all open-source software!</span>
+          </div>
+
+        </div>
+        </div>
+</div>
+<!-- EOF COMMENTS section -->
+
+
+<!-- #### Add Your Comment BOX -->
+<div style="width: 794px; float: left; height: auto; padding: 5px;" class="shadow2">
+  <div style="font: 14px/26px Arial, Helvetica, sans-serif; margin: 0px auto; padding-left: 6px; width: 782px; height: auto; color: #cacaca; background: #000000; text-align: center;" class="rounded">
+    <span style="font: 14px/16px &#39;Arimo&#39;, sans-serif;">Add Your Comment</span>
+  </div>
+  <div style="height: 230px; margin-top: 12px;" id="cform">
+        <a name="addcomment"></a>
+    <form name="commentform" id="commentform" action="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp#addcomment" method="post">
+      <div style="float: left; width: 270px; height: auto;">
+        <label for="name"> Name *</label><br>
+          <input type="text" name="name" id="name" value="" style="background-color: transparent; padding: 0; border: 1px solid #2b2f35; height: 20px; width: 248px; margin-top: 7px; vertical-align: middle;" class="comments_input rounded" tabindex="1">
+        <p style="margin-top: 12px;">
+          <label for="email"> Email Address * (will not be published)</label><br>
+          <input type="email" name="email" id="email" value="" style="background-color: transparent; padding: 0; border: 1px solid #2b2f35; height: 20px; width: 248px; margin-top: 7px; vertical-align: middle;" class="comments_input rounded" tabindex="2">
+        </p>
+        <p style="margin-top: 12px;">
+          <label for="email">(Security check) What is the capital of France? *</label><br>
+            <input type="text" name="cvalid" id="cvalid" value="" style="background-color: transparent; padding: 0; border: 1px solid #2b2f35; height: 20px; width: 248px; margin-top: 7px; vertical-align: middle;" class="comments_input rounded"> <input type="hidden" name="comment_post_ID" id="comment_post_ID" value="37091">
+        </p>
+        <p style="margin-top: 12px;">
+          <input name="submit" type="submit" id="add_comment" tabindex="4" value="Add Comment" style="float: right; background: transparent url(/images/button_double_length.gif) 0 0 no-repeat; margin-right: 19px; border: 0; width: 100px; height: 20px; color: #969BA3; font: 12px/16px &#39;ArimoNormal&#39;, Helvetica, sans-serif; cursor: pointer;">
+
+                  </p>
+      </div>
+      <div style="float: left; width: 420px; margin-left: 15px; height: auto;" id="validation">
+        <p>
+          <label for="comment">Your Comment * (Please use plain English, no foreign languages)</label>
+          <textarea name="comment" id="comment" rows="6" cols="50" tabindex="3" style="background-color: transparent; margin-left: 7px; padding: 0; border: 1px solid #2b2f35; height: auto; width: 400px; margin-top: 7px; vertical-align: middle;" class="comments_area rounded"></textarea>
+        </p>
+      </div>
+    </form>
+  </div>
+  <p id="validation_response" style="margin: 1px auto; display: none;"></p>
+</div>
+<!-- EOF #### Add Your Comment BOX -->
+
+      <div style="width: 100%; float: left; height: 100px; text-align: center; padding-top: 11px;" class="shadow2">
+    <div class="pub" id="LB" style="min-height: 90px; min-width: 728px;">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=6&Task=Get&IFR=False&PageID=37622&SiteID=1&Random=20160816125705395', 'LB');
+    });
+  </script>
+</div>
+	</div>
+
+    </div>
+
+    <div style="width: 180px; float: left; margin-left: 13px; margin-top: 20px;" class="shadow2">
+      <div style="width: 160px; height: 600px; margin: 0 auto; padding-top: 9px;">
+                    <div class="pub" id="T1" style="">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes.3dtotal.com/pages/a.aspx?ZoneID=2&Task=Get&IFR=False&PageID=88970&SiteID=1&Random=2016081612570513', 'T1');
+    });
+  </script>
+</div>
+                    </div>
+      <div style="width: 160px; height: 600px; margin: 0 auto; padding-top: 9px;">
+                    <div class="pub" id="T2" style="min-height: 600px; min-width: 160px;">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes3.3dtotal.com/pages/a.aspx?ZoneID=7&Task=Get&IFR=False&PageID=62339&SiteID=1&Random=20160816125705570', 'T2');
+    });
+  </script>
+</div>
+                    </div>
+      <div style="width: 160px; height: 600px; margin: 0 auto; padding-top: 9px;">
+                    <div class="pub" id="T3" style="min-height: 600px; min-width: 160px;">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes4.3dtotal.com/pages/a.aspx?ZoneID=8&Task=Get&IFR=False&PageID=95376&SiteID=1&Random=2016081612570568', 'T3');
+    });
+  </script>
+</div>
+                    </div>
+      <div style="width: 160px; height: 600px; margin: 0 auto; padding-top: 9px; padding-bottom: 9px;">
+                    <div class="pub" id="T4" style="min-height: 600px; min-width: 160px;">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes5.3dtotal.com/pages/a.aspx?ZoneID=9&Task=Get&IFR=False&PageID=27389&SiteID=1&Random=20160816125705213', 'T4');
+    });
+  </script>
+</div>
+                    </div>
+      <div style="width: 160px; height: 600px; margin: 0 auto; padding-top: 9px; padding-bottom: 9px;">
+                    <div class="pub" id="T5" style="min-height: 600px; min-width: 160px;">
+  <script type="text/javascript">
+    $(document).ready(function() {
+      crapLoader.loadScript('http://hermes.3dtotal.com/pages/a.aspx?ZoneID=10&Task=Get&IFR=False&PageID=40116&SiteID=1&Random=20160816125705427', 'T5');
+    });
+  </script>
+</div>
+                    </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- #### EOF Advert Box - Bottom Letter Box -->
+
+
+
+  <!-- Footer starts here -->
+  <div style="width: 100%; margin-top: 10px; background: #111316; float: left; height: auto">
+
+    <div style="width: 996px; margin: 20px auto 25px auto; color: #969BA3; font: 13px/18px Arimo, Arial, sans-serif;">
+
+            
+        <div id="footer" style="float: left; height: auto;">
+            <div style="float: left; width: 140px;"><img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/3dtotal_smalllogo.png" width="109" height="31" alt="3dt_small_logo" border="0" style="vertical-align:middle">
+            <ul style="positon: relative;">
+                <li style="position: relative; font-size: 10px; bottom: 0; vertical-align: bottom;"><a href="http://www.3dtotal.com/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp#top">^ Back to Top ^</a></li>
+            </ul>
+            </div>
+            <div style="float: left; width: auto;">
+                <div style="float: left; width: 200px;">
+                  <ul>
+                      <li><a href="http://www.3dtotal.com/">Home</a></li>
+                      <li><a href="https://shop.3dtotal.com/" target="_blank">Products</a></li>
+                      <li><a href="http://www.3dtotal.com/about">About</a></li>
+                      <li><a href="http://www.3dtotal.com/index_page.php?id=2">Advertise Info</a></li>
+                      <li><a href="http://www.3dtotal.com/contactus">Contact Us</a></li>
+                      <li><a href="http://www.3dtotal.com/meettheteam">Meet The Team</a></li>
+                  </ul>
+                </div>
+
+                <div style="float: left; width: 200px;">
+                  <ul>
+                      <li><a href="https://3dtotal.com/form_enter.php">How to Submit</a></li>
+                      <li><a href="http://www.3dtotal.com/tutorials">Tutorials</a></li>
+                      <li><a href="http://www.3dtotal.com/galleries">Galleries</a></li>
+                      <li><a href="http://forums.3dtotal.com/" target="_blank">Forums</a></li>
+                      <li><a href="http://www.layerpaint.com/" target="_blank">LayerPaint</a></li>
+                      <li><a href="http://freetextures.3dtotal.com/" target="_blank">Free Textures </a></li>
+                  </ul>
+                </div>
+
+                <div style="float: left; width: 200px;">
+                  <ul>
+                      <li><a href="http://www.facebook.com/3DTotal">Join Us on Facebook</a></li>
+                      <li><a href="http://pinterest.com/3DTotal">Pinterest</a></li>
+                      <li><a href="http://twitter.com/3dtotal">Follow Us on Twitter</a></li>
+                      <li><a href="https://www.instagram.com/3dtotal/">Follow us on Instagram</a></li>
+                      <li><a href="http://www.3dtotal.com/rss_feeder/" target="_blank">RSS</a></li>
+                      <!--<li>---</li>-->
+                      <li><a href="http://www.3dtotal.com/index_page.php?id=43">Cookies Policy</a></li>
+                  </ul>
+                </div>
+
+                <div style="float: left;width: 250px;">
+                  <ul>
+                      <li><a href="http://www.3dcreativemag.com/" target="_blank">3DCreative Magazine</a></li>
+                      <li><a href="http://www.2dartistmag.com/" target="_blank">2DArtist Magazine</a></li>
+                      <li>Visual Design  <a href="http://fullyillustrated.com/" target="_blank">Fully Illustrated</a> <img src="./__ Create a glass with Blender and Mitsuba by Filippo Veniero (page 1 of 2) _ Blender, Project Overview, Lighting, Rendering, Modeling, Texturingtutorial from 3dtotal.com_files/fully_illustrated_logo.gif" width="30" height="17" alt="fully illustrated design agency" border="0" style="vertical-align: middle; width: 30px;"></li>
+                  </ul>
+                </div>
+            </div>
+            <div style="float: left; height: 2em; min-height: 2em; clear: both;"></div>
+        </div>
+
+        
+
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+
+jQuery(document).ready(function() {
+
+jQuery('#favsUrl').hover(function() {
+    jQuery('#favsUrl div').css({'background-position' : '0 -252px' });
+    }, function () {
+    jQuery('#favsUrl div').css({'background-position' : '0 -233px' });
+});
+
+jQuery('#favsUrl').click(function () {
+ 
+window.location=('https://3dtotal.com/members/login_secure.php?ref_m=/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp');
+
+})
+
+jQuery('#submitSearchTop').click(function () {
+        jQuery('#top_search').submit();
+ })
+
+/* Search GALLERY on top magnifying glass button */
+     jQuery('#submitSearchTop').hover(function () {
+        //jQuery(this).css('color', '#fff');
+        jQuery(this).css("background-image", "url(http://www.3dtotal.com/images/site-header/social-sprite.png)");
+        jQuery(this).css("cursor", "hand");
+        jQuery(this).css("cursor", "pointer");
+        jQuery(this).css("background-position", "0 -171px");
+    }, function () {
+        jQuery(this).css("background-image", "url(http://www.3dtotal.com/images/site-header/social-sprite.png)");
+         jQuery(this).css("background-position", "0 -150px");
+
+
+    });
+
+/** Rad on 21/12/2011 - more sofisticated */
+var icoStart = [0, 50, 409, 100];
+jQuery('.icoSocial').hover(function () {
+        var i = parseInt((jQuery(this).attr('id')).substr(3));
+
+        /*'background': 'transparent url(offsite_news_animations/blue_overlay_178_135.png)'*/
+        // jQuery('#bcd'+i).attr('src','images/right-arrow-button_on.gif');
+            if (i == 2) {jQuery('#ico'+i).css({'background':'url(http://www.3dtotal.com/images/site-header/social-sprite.png)','background-position' : '0 -' + (parseInt(icoStart[i])+parseInt(22)) + 'px'});
+                // alert ('ico2 so i is 2 !!! ');
+            }
+            else {
+                jQuery('#ico'+i).css({'background':'url(http://www.3dtotal.com/images/site-header/social-sprite.png)','background-position' : '0 -' + (parseInt(icoStart[i])+parseInt(25)) + 'px'});
+                // alert ('I is : ' + i);
+            }
+
+
+
+    }, function () {
+        var i = (jQuery(this).attr('id')).substr(3);
+         // alert ('icoStart ' + (parseInt(icoStart[i])+parseInt(17)));
+         jQuery('#ico'+i).css({'background':'url(http://www.3dtotal.com/images/site-header/social-sprite.png)','background-position' : '0 -' + icoStart[i] + 'px'});
+
+    });
+
+/*on 24/08/2011 - add top navigation as pure css */
+
+
+
+var bid = /* Load our middle ban */
+jQuery(".admax").load("/promo/banners_db_engine.php",{category: 'max'});
+jQuery(".adgen3d").load("/promo/banners_db_engine.php",{category: 'gen3d'});
+jQuery(".adgen2d").load("/promo/banners_db_engine.php",{category: 'gen2d'});
+jQuery(".adzbrush").load("/promo/banners_db_engine.php",{category: 'zbrush'});
+jQuery(".adxsi").load("/promo/banners_db_engine.php",{category: 'xsi'});
+jQuery(".adps").load("/promo/banners_db_engine.php",{category: 'ps'});
+jQuery(".admaya").load("/promo/banners_db_engine.php",{category: 'maya'});
+jQuery(".adlw").load("/promo/banners_db_engine.php",{category: 'lw'});
+jQuery(".adlarge").load("/promo/banners_db_engine.php",{category: 'large'});
+jQuery(".adtexturesXL").load("/promo/banners_db_engine.php",{category: 'texturesXL'});
+jQuery(".individual").load("/promo/banners_db_engine.php",{category: 'individual', bid: bid});
+
+/*
+jQuery.post('/newsite/uploader-images-zip-short.php',{ id: '', admin: 'tutorialsedit' }, function(data) {
+  jQuery('#answer').html(data);
+});
+*/
+
+/*
+jQuery(function() {
+	//Set the default directory to find the images needed
+	//by the plugin (closebtn.png, blank.gif, loading images ....)
+	jQuery.fn.fancyzoom.defaultsOptions.imgDir='../images/'; //very important must finish with a /
+
+	// Select all links in object with gallery ID using the defaults options
+	jQuery('#gallery a').fancyzoom();
+
+	// Select all links with tozoom class, set the open animation time to 1000
+	jQuery('a.tozoom').fancyzoom({Speed:1000});
+
+	// Select all links set the overlay opacity to 80%
+	jQuery('a').fancyzoom({overlay:0.8});
+
+	//new rev > 1.2
+	//apply fancyzoom effect on all image whose class is fancyzoom !!
+	jQuery('img.fancyzoom').fancyzoom();
+
+
+});
+*/
+
+
+    jQuery('.across').hover(function () {
+        var i = (jQuery(this).attr('id')).substr(1);
+        var ii = i-1;
+
+        jQuery('#ai'+ii).attr('src','/newsite/images/right-arrow-button_on.gif');
+
+    }, function () {
+          var i = (jQuery(this).attr('id')).substr(1);
+          var ii = i-1;
+         jQuery('#ai'+ ii).attr('src','/newsite/images/right-arrow-button.gif');
+    });
+
+/*jQuery('#commentform').submit(function () { */
+
+/*jQuery('#add_comment').mouseover(function () {
+}
+    //alert ('FORM VALIDATION should go on!');
+
+jQuery('#validation_response').slideDown(1000,function(){
+    $(this).css({display': 'block'});
+
+
+}); //animate
+
+jQuery.post('./scripts/form_validation.php',{ name: jQuery('#name').val(), email: jQuery('#email').val(), cvalid: jQuery('#cvalid').val(), comment: jQuery('#comment').val(), comment_post_ID: jQuery('#comment_post_ID').val(), rating: jQuery('#rating').val() }, function(data) {
+    jQuery('#validation_response').html(data);
+});
+
+});*/ /*EOF add_comment mouseover */
+
+/* ### PROPER own function in jQuery ! */
+function commentValidate() {
+   jQuery.post('/newsite/scripts/form_validation.php',{ name: jQuery('#name').val(), system: '0', email: jQuery('#email').val(), cvalid: jQuery('#cvalid').val(), comment: jQuery('#comment').val(), validate: '2', comment_post_ID: jQuery('#comment_post_ID').val(), rating: jQuery('#rating').val() }, function(data) {
+
+
+var errorMessage = "";
+
+if(data.name != undefined) {
+        jQuery('#name').css({'background':'#343940', 'border': '2px solid #fff'});
+        errorMessage = errorMessage + data.name + '<br/>';
+    } else {
+        //alert('NAME:' + data.name);
+        jQuery('#name').css({'background':'none', 'border':'1px solid #2b2f35'});
+    }
+    if(data.email != undefined) {
+        jQuery('#email').css({'background':'#343940', 'border': '2px solid #fff'});
+        errorMessage = errorMessage + data.email + '<br/>';
+    } else {
+       jQuery('#email').css({'background':'none', 'border':'1px solid #2b2f35'});
+
+    }
+
+    if(data.cvalid != undefined) {
+        jQuery('#cvalid').css({'background':'#343940', 'border': '2px solid #fff'});
+        errorMessage = errorMessage + data.cvalid + '<br/>';
+    } else {
+
+        jQuery('#cvalid').css({'background':'none', 'border':'1px solid #2b2f35'});
+    }
+
+   if(data.comment != undefined) {
+        jQuery('#comment').css({'background':'#343940', 'border': '2px solid #fff'});
+        errorMessage = errorMessage + data.comment + '<br/>';
+    } else {
+        jQuery('#comment').css({'background':'none', 'border':'1px solid #2b2f35'});
+    }
+
+        if (data.name === undefined && data.email === undefined && data.cvalid === undefined
+        && data.comment === undefined) {
+            errorMessage = "Thank you. Your comment is scheduled for admin approval.";
+            jQuery('#cform').slideUp(2000, function() {
+                jQuery(this).css({'visibility' : 'hidden'});
+            });
+
+            jQuery('#validation_response').css({'display' : 'block'});
+            jQuery('#validation_response').removeClass('error');
+            jQuery('#validation_response').addClass('success');
+            jQuery('#validation_response').html(errorMessage);
+
+            } else {
+                jQuery('#validation_response').html(errorMessage);
+                jQuery('#validation_response').css({'display' : 'block'});
+                jQuery('#validation_response').addClass('error');
+            }
+    //jQuery('#validation_response').html(data);
+}, "json");
+
+}
+
+jQuery("#add_comment").live('mouseover',commentValidate);
+jQuery("#add_comment").live('focus',commentValidate);
+jQuery("#add_comment").live('click',commentValidate);
+// jQuery("#add_comment").mouseover(commentValidate);
+
+jQuery(function() {
+                // jQuery('.style[title]').hovertip(); //div
+                // jQuery('img[title]').hovertip();
+            });
+
+/* Store original rating for later use */
+var original = [];
+for(i=1; i <= 5; i++) {
+    original[i] = jQuery('.star[id="'+i+'"]').attr('src');
+}
+
+jQuery('.star').mouseover(function (){
+
+var rep = jQuery(this).attr('id');
+    /* Tooltips fo'#starrating').live('mouseover', r Rating etc*/
+
+
+    for (i=1; i <= rep; i++) {
+
+        jQuery('.star[id="'+i+'"]').attr('src','/newsite/images/rating_yellow.png');
+
+            for (y=i+1; y <= 5; y++) {
+                jQuery('.star[id="'+y+'"]').attr('src',original[y]);
+            }
+        //jQuery('#ratingdiv').attr('title','You have rated this: '+i);
+    }
+
+});
+
+jQuery('.star').click(function (){
+    var rep = jQuery(this).attr('id');
+        jQuery.post('/newsite/scripts/rating.php',{ page_id: jQuery('#comment_post_ID').val(), rating: rep }, function(data) {
+
+
+                //jQuery(this).css({'visibility' : 'hidden'});
+            jQuery('#yrating').html(data).fadeIn(6000, function() { //
+            });
+
+
+
+        });
+
+});
+
+/* EOF 06/09/2011 */
+
+
+ /* Top Shop navigation */
+    jQuery('#shopnav').hover(function () {
+        this.src = '/images/3dtotal_shop_on.jpg';
+    }, function () {
+        this.src = '/images/3dtotal_shop_off.jpg';
+    });
+
+ jQuery('#freenav').hover(function () {
+        this.src = '/newsite/images/free_stuff_on.jpg';
+    }, function () {
+        this.src = '/newsite/images/free_stuff_off.jpg';
+    });
+
+ // switched on by default
+ jQuery('#tutorialnav').attr('src','/newsite/images/tutorials_on.jpg');
+
+ jQuery('#tutorialnav').hover(function () {
+        this.src = '/newsite/images/tutorials_on.jpg';
+    }, function () {
+        this.src = '/newsite/images/tutorials_off.jpg';
+    });
+
+ jQuery('#gallerynav').hover(function () {
+        this.src = '/images/galleries_on.jpg';
+    }, function () {
+        this.src = '/images/galleries_off.jpg';
+    });
+
+ jQuery('#forumnav').hover(function () {
+        this.src = '/images/forums_on.jpg';
+    }, function () {
+        this.src = '/images/forums_off.jpg';
+    });
+
+ jQuery('#submitnav').hover(function () {
+        this.src = '/images/submit_on.jpg';
+    }, function () {
+        this.src = '/images/submit_off.jpg';
+    });
+
+	jQuery('.gallery_submit_button').hover(function () {
+        this.src = '/images/submit_tutorialon.png';
+    }, function () {
+        this.src = '/images/submit_tutorialoff.png';
+    });
+
+	jQuery('.archivebutton').hover(function () {
+        this.src = '/images/archive_button_on.jpg';
+    }, function () {
+        this.src = '/images/archive_button_off.jpg';
+    });
+
+	jQuery('.shop_button').hover(function () {
+        this.src = '/images/shop_button_on.jpg';
+    }, function () {
+        this.src = '/images/shop_button_off.jpg';
+    });
+
+	jQuery('.comments_div').hover(function () {
+        var i = (jQuery(this).attr('id')).substr(2);
+        jQuery('#icd'+i).css('border','1px solid #4396fd');
+		jQuery('#bcd'+i).attr('src','/newsite/images/button_on.jpg');
+		//jQuery('.comments_button').attr('src','images/button_on.jpg');
+    }, function () {
+        var i = (jQuery(this).attr('id')).substr(2);
+		/*alert ('cdd ' + i); */
+		jQuery('#bcd'+i).attr('src','/newsite/images/button_off.jpg');
+		jQuery('#icd'+i).css('border','none');
+		//jQuery('.comments_button').attr('src','images/button_off.jpg');
+    });
+
+	/* Search engine on top magnifying glass button */
+	 jQuery('#submitmag').hover(function () {
+        //jQuery(this).css('color', '#fff');
+		jQuery(this).css("background-image", "url(/newsite/images/mag_glass_on.jpg)");
+		jQuery(this).css("cursor", "hand");
+		jQuery(this).css("cursor", "pointer");
+    }, function () {
+        jQuery(this).css("background-image", "url(/newsite/images/mag_glass_off.jpg)");
+
+    });
+
+	/* Search GALLERY on top magnifying glass button */
+	 jQuery('#submitgallery').hover(function () {
+        //jQuery(this).css('color', '#fff');
+		jQuery(this).css("background-image", "url(/newsite/images/mag_glass_on.jpg)");
+		jQuery(this).css("cursor", "hand");
+		jQuery(this).css("cursor", "pointer");
+    }, function () {
+        jQuery(this).css("background-image", "url(/newsite/images/mag_glass_off.jpg)");
+
+    });
+
+
+
+	jQuery('#si2').hover(function () {
+        this.src = '/newsite/images/most_viewed_on.jpg';
+    }, function () {
+        this.src = '/newsite/images/most_viewed_off.jpg';
+    });
+
+	jQuery('#si1').hover(function () {
+        this.src = '/images/least_viewed_on.jpg';
+    }, function () {
+        this.src = '/newsite/images/least_viewed_off.jpg';
+    });
+
+	jQuery('#si3').hover(function () {
+        this.src = '/newsite/images/most_rated_on.jpg';
+    }, function () {
+        this.src = '/newsite/images/most_rated_off.jpg';
+    });
+
+	jQuery('#si4').hover(function () {
+        this.src = '/images/least_rated_on.jpg';
+    }, function () {
+        this.src = '/images/least_rated_off.jpg';
+    });
+
+
+	/* on 18/07/2011 - check previous statements as some are empty! taken from galleries! */
+
+        jQuery('#go-back').hover(function () {
+        jQuery(this).css({"background-image" : "url(/images/left_on.png)"});
+		//jQuery(this).css("cursor", "hand");
+		jQuery(this).css("cursor", "pointer");
+		//
+    }, function () {
+        jQuery(this).css({"background-image" : "url(/images/left_off.png)"});
+    });
+
+    jQuery('#go-back').click(function () {
+           window.location = 'https://www.google.com.br/';
+           // complicated - replace with proper a href (repair, boost, perfromance)
+        });
+
+/* Paginator at the bottom affected here */
+	jQuery('.pag-left').hover(function () {
+        jQuery(this).css("background-image", "url(/images/left_on_30091.png)");
+		//jQuery(this).css("cursor", "hand");
+		jQuery(this).css("cursor", "pointer");
+		//
+    }, function () {
+        jQuery(this).css("background-image", "url(/images/left_off_30091.png)");
+    });
+
+
+
+
+/* on 12/09/2011 - this has no pages - this is */
+        jQuery('.pag-left', '.pag-left-b').click(function () {
+
+        /* change page -minus one, if this is first pagedon;t do anything? */
+		var page = 1;
+		page = page - 1;
+		var pages = 2;
+			if (page>=1 && page<=pages) {
+			window.location=('/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page='+page);
+			return false;
+				//alert ("Pages: " + pages);
+			} else {
+			/* this is now zero - make him go to last page*/
+			window.location=('/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page='+pages);
+			return false;
+			}
+
+
+		//
+    });
+
+	jQuery('.pag-right').hover(function () {
+        jQuery(this).css("cursor", "pointer");
+        jQuery(this).css("background-image", "url(/images/right_on_3009.png)");
+		//
+    }, function () {
+        jQuery(this).css("background-image", "url(/images/right_off_3009.png)");
+    });
+
+	jQuery('.pag-right').click(function () {
+        /* change page -minus one, if this is first page don't do anything? */
+
+		var page = 1;
+		page = page + 1;
+		var pages = 2;
+			if (page>=1 && page<=pages) {
+			window.location=('/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp?page='+page);
+			return false;
+				//alert ("Pages: " + pages);
+			} else {
+			/* this is now zero - make him go to last page*/
+			window.location=('/tutorial/1848-create-a-glass-with-blender-and-mitsuba-by-filippo-veniero-water-render-gimp');
+			return false;
+			}
+
+
+		//
+    });
+
+
+	/* EOF on 18/07/2011 - check previous statements as some are empty! */
+
+/*	jQuery('#si1').mouseover(function() {
+ 	 jQuery('#si1').attr('src','images/most_viewed_on.jpg');
+	});
+*/
+
+/* Sorting according dates etc */
+var sort="date";
+var cat="4";
+
+/* Main category buttons navigation */
+
+jQuery("#gc" + cat + " div").css( {"background-image" : "url(/newsite/images/blank_box_blue.png)", "color" : "#fff"} )
+
+/* Details buttons on and off */
+
+var detailsoff = "";
+if(detailsoff=="1") {
+jQuery("#gsoff div").css("background-image", "url(/images/gallery_menu/off_button_on.jpg)");
+jQuery("#gson div").css("background-image", "url(/images/gallery_menu/on_button_off.jpg)");
+} else {
+jQuery("#gsoff div").css("background-image", "url(/images/gallery_menu/off_button_off.jpg)");
+jQuery("#gson div").css("background-image", "url(/images/gallery_menu/on_button_on.jpg)");
+}
+
+/* Comments buttons */
+var detailsoff = "";
+if(sort=="views") {
+jQuery("#gsviews div").css("background-image", "url(/images/gallery_menu/views_on.jpg)");
+}
+
+});
+</script>
+
+
+<script type="text/javascript">jQuery(document).ready(function () {crapLoader.loadScript('/newsite/scripts/jQuery.cookie.js', '');crapLoader.loadScript('/newsite/scripts/jquery.simplemodal.1.4.2.min.js', '', {success: function() {            jQuery.ajaxSetup({ cache: true });
+            jQuery.getScript("/cookies_jQuery_snipets.js", function(data, textStatus, jqxhr) {
+                /*console.log(data); //data returned
+                console.log(textStatus); //success
+                console.log(jqxhr.status); //200
+		*/
+                console.log('Load was performed.');
+            });
+            jQuery.ajaxSetup({ cache: false });
+            }});crapLoader.loadScript('/newsite/scripts/jquery.mousewheel.js', '');crapLoader.loadScript('/newsite/scripts/jquery.jscrollpane.min.js', '', {success: function() {            jQuery('.scroll-pane').jScrollPane({
+			showArrows: true,
+			horizontalGutter: 10,
+			verticalGutter: 10,
+			verticalDragMinHeight: 96,
+			verticalDragMaxHeight: 96,
+			horizontalDragMinWidth: 20,
+			horizontalDragMaxWidth: 20
+
+}); /* scroller initialization */
+
+            }});crapLoader.loadScript('/newsite/scripts/jquery.fancyzoom.min.js', '', {success: function() {               jQuery(function() {
+            /* http://www.dfc-e.com/metiers/multimedia/opensource/jquery-fancyzoom/ */
+           jQuery.fn.fancyzoom.defaultsOptions.imgDir='/newsite/scripts/resources/';
+           //very important must finish with a '/'
+                jQuery("a.zoom").fancyzoom({
+                closeOnClick: true, overlay: 0.6, Speed: 400
+                })
+            })
+
+            }});});</script>
+
+<span id="craploader_1471348627327"></span><span id="craploader_1471348627327"></span><span id="craploader_1471348627327"></span><span id="craploader_1471348627331"></span><span id="craploader_1471348627331"></span></body></html>

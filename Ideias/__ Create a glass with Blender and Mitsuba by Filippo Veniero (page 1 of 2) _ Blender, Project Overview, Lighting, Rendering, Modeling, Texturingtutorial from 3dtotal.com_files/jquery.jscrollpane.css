@@ -1,0 +1,12 @@
+.jspContainer{overflow:hidden;position:relative;}.jspPane{position:absolute;}.jspVerticalBar{position:absolute;top:0;right:0;width:26px;height:100%;background:#000;}.jspHorizontalBar{position:absolute;bottom:0;left:0;width:100%;height:16px;background:red;}.jspVerticalBar *,.jspHorizontalBar *{margin:0;padding:0;}.jspVerticalBar .jspCap{height:96px;}.jspCap{display:none;border:1px solid #fff;}.jspHorizontalBar .jspCap{float:left;}.jspTrack{background:#000;;position:relative;}.jspDrag{background:transparent url(/newsite/images/slider_mid_2_vertical.png);position:relative;top:0;left:0;cursor:pointer;}position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+
+}.jspDragBottom{background:#343940;position:relative;top:0;left:0;cursor:pointer;}*/
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}.jspArrow{text-indent:-20000px;display:block;cursor:pointer;}.jspArrowUp{background:transparent url(/newsite/images/slider_top_off.png);}.jspDisabled{background:transparent url(/newsite/images/slider_top_on.png);cursor:pointer;}.jspArrowDown{cursor:default;background:transparent url(/newsite/images/slider_bottom_off.png);}.jspArrowDown.jspDisabled{background:transparent url(/newsite/images/slider_bottom_on.png);cursor:pointer;}.jspVerticalBar .jspArrow{height:29px;}.jspHorizontalBar .jspArrow{width:16px;float:left;height:100%;}.jspVerticalBar .jspArrow:focus{outline:none;}.jspCorner{background:#eeeef4;float:left;height:100%;}* html .jspCorner{margin:0 -3px 0 0;}
