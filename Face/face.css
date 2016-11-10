@@ -1,0 +1,47 @@
+img,
+canvas {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+result {
+    display: block;
+}
+
+p {
+    text-align: center;
+}
+
+footer {
+    bottom: 0px;
+    position: absolute;
+    width: 100%;
+}
+
+pre {
+    display: inline-block;
+    outline: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
+}
