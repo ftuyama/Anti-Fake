@@ -9,6 +9,10 @@ canvas {
     left: 10%;
 }
 
+.pict {
+    height: 300px;
+}
+
 .imgContainer {
     float: left;
 }
