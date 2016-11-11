@@ -30,12 +30,15 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="row pict">
-                <img id="picture" class="pic" src=""></img>
-                <canvas id="canvas" width="400" height="250">
+                <img id="picture" class="pic" src="" />
+                <img id="original" src="" style="visibility:hidden" />
+                <canvas id="canvas" width="400" height="300">
             </div>
             <div class="container">
                 <label>Upload de Imagem: </label>
                 <input id="upload" type="file" accept="image/*"/>
+                <div id="evaluation"></div>
+                <img id="status" src="" height="50px"/>
             </div>
         </div>
         <div class="col-sm-6">
@@ -55,7 +58,7 @@
         <div class="container">
             <div id="insta"></div>
         </div><br>
-        <button class="btn btn-success">Comparar</button>
+        <button id="evaluate" class="btn btn-success">Comparar</button>
     </div>
     <div id="insta_reponse"></div>
 </body>

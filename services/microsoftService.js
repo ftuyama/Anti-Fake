@@ -9,12 +9,12 @@ var SUBSCRIPTION_KEY = "79d40fa92b1140f28b4401858b34c877";
 function detect(image, params) {
     return new Promise(function(resolve, reject) {
         resolve([{
-            "faceId": "ec974c0d-1cf2-4d0c-8efb-e22f9be64742",
+            "faceId": "c01b43ec-e04f-4ebc-8d61-5c035605e576",
             "faceRectangle": {
-                "top": 64,
-                "left": 82,
-                "width": 86,
-                "height": 86
+                "top": 0,
+                "left": 176,
+                "width": 383,
+                "height": 343
             }
         }]);
 

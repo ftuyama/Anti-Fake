@@ -12,6 +12,7 @@ var app = express();
 // Configuração das rotas principais
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/ai'));
+app.use(express.static(__dirname + '/img'));
 app.use(express.static(__dirname + '/web'));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/services'));

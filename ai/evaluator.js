@@ -3,20 +3,22 @@
  */
 
 var faceIds = [];
-var similar;
 
-function evaluate() {
+function evaluate(pics) {
     faceIds = [];
     pics.forEach(function(pic) {
-        faceIds.push(evaluateOne(pic));
+        var faceId = evaluateOne(pic);
+        if (faceId != undefined)
+            faceIds.push(faceId);
     });
-    similar = compare({
+    compare({
         'faceId': image,
         'faceIds': faceIds,
         "mode": "matchPerson"
+    }).then(function(response) {
+        alert(response);
+        return [response, judge(response)];
     });
-    alert(similar);
-    return judge(similar);
 }
 
 function judge(similar) {
@@ -24,14 +26,16 @@ function judge(similar) {
     similar.forEach(function(rate) {
         consensus += rate.confindence;
     });
-    return consensus > rate.length / 2;
+    return consensus / rate.length;
 }
 
 function evaluateOne(picture) {
-    detect(pic, {
+    detect(picture, {
         "returnFaceId": "true",
         "returnFaceLandmarks": "false"
     }).then(function(response) {
-        return response[0].faceId;
+        if (response != undefined && response.length == 1)
+            return response[0].faceId;
+        return undefined;
     });
 }

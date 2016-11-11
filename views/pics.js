@@ -2,7 +2,7 @@
  * Displays Instagram's Pictures
  */
 
-var pics = [];
+var name, pics = [];
 
 function display(response) {
     if (response == undefined || response.user == undefined || response.user.username == undefined)
@@ -15,6 +15,7 @@ function display(response) {
 }
 
 function show(user) {
+    name = user.full_name;
     pics = [user.profile_pic_url];
     user.media.nodes.forEach(function(node) {
         if (!node.is_video)

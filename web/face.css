@@ -2,10 +2,15 @@ html {
     overflow-x: hidden;
 }
 
+.pic {
+    height: 300px;
+    width: auto;
+}
+
 .pic,
 canvas {
     position: absolute;
-    top: 10%;
+    top: 0%;
     left: 10%;
 }
 

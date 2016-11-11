@@ -2,28 +2,40 @@
  * Draws API responses on Canvas
  */
 var canvas, context, picture;
+var x_scale, y_scale;
+
 $(function() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
     picture = document.getElementById("picture");
-    $("#picture").attr("src", image);
+    resize();
 });
 
 /* Drawing methods */
 function drawings(response) {
-    var faceRect = response[0].faceRectangle;
     drawImage(picture, 0, 0);
-    drawRect(faceRect);
+    drawRect(response[0].faceRectangle);
 }
 
-function drawImage(picture, x, y) {
-    context.drawImage(picture, x, y);
+function drawImage(image, x, y) {
+    context.drawImage(image, x, y, picture.clientWidth, picture.clientHeight);
 }
 
 function drawRect(rect) {
     context.beginPath();
-    context.rect(rect.top, rect.left, rect.width, rect.height);
+    context.rect(
+        rect.left * x_scale, rect.top * y_scale,
+        rect.width * y_scale, rect.height * x_scale
+    );
     context.lineWidth = 3;
     context.strokeStyle = 'green';
     context.stroke();
+}
+
+/* Resizing method */
+function resize() {
+    $("#picture").attr("src", image);
+    $("#original").attr("src", image);
+    x_scale = picture.clientWidth / original.clientWidth;
+    y_scale = picture.clientHeight / original.clientHeight;
 }
