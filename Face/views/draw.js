@@ -1,11 +1,20 @@
 /*
  * Draws API responses on Canvas
  */
-var canvas, context;
+var canvas, context, picture;
 $(function() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
+    picture = document.getElementById("picture");
+    $("#picture").attr("src", image);
 });
+
+/* Drawing methods */
+function drawings(response) {
+    var faceRect = response[0].faceRectangle;
+    drawImage(picture, 0, 0);
+    drawRect(faceRect);
+}
 
 function drawImage(picture, x, y) {
     context.drawImage(picture, x, y);

@@ -1,5 +1,5 @@
 html {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 img,
@@ -15,12 +15,6 @@ result {
 
 p {
     text-align: center;
-}
-
-footer {
-    bottom: 0px;
-    position: absolute;
-    width: 100%;
 }
 
 pre {

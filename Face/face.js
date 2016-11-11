@@ -1,22 +1,30 @@
-$(function() {
-    var image = "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAkEAAAAJGI4Mjg0NTJmLTdmNzItNDRlYi05OTNlLTk3NTNlNjFkNjQ2NQ.jpg";
+/*
+ * Application View Controller
+ */
+var image = "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAkEAAAAJGI4Mjg0NTJmLTdmNzItNDRlYi05OTNlLTk3NTNlNjFkNjQ2NQ.jpg";
 
-    /* Requesting methods */
+$(function() {
+    /* Request Microsoft API */
     detect(image, {
         "returnFaceId": "true",
         "returnFaceLandmarks": "false"
     }).then(function(response) {
         $("#face_reponse").html(syntaxHighlight(response));
+        drawings(response);
+    }).catch(function(error) {
+        error = error ? error : 'Erro da API';
+        $("#face_reponse").html(syntaxHighlight(error));
+    });
 
-        /* Drawing methods */
-        var picture = document.getElementById("picture");
-        $("#picture").attr("src", image);
-
-        var faceRect = response[0].faceRectangle;
-        drawImage(picture, 0, 0);
-        drawRect(faceRect);
-
-    }).then(function(error) {
-        $("#face_reponse").html(syntaxHighlight(response));
+    /* Request Instagram API */
+    $('#query').on('input', function() {
+        query($('#query').val())
+            .then(function(response) {
+                $("#insta_reponse").html(syntaxHighlight(response));
+                display(response);
+            }).catch(function(error) {
+                error = error ? error : 'Erro da API';
+                $("#insta_reponse").html(syntaxHighlight(error));
+            });
     });
 });
