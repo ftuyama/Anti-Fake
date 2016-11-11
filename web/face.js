@@ -1,15 +1,16 @@
 /*
  * Application View Controller
  */
-var imageId, image = "https://instagram.fsjk1-1.fna.fbcdn.net/t51.2885-15/e35/13687367_608310479350599_763014570_n.jpg?ig_cache_key=MTMyMzM4NzgyNjE3OTUwOTcyMg%3D%3D.2";
+var imageId, imageUrl = "https://instagram.fsjk1-1.fna.fbcdn.net/t51.2885-15/e35/13687367_608310479350599_763014570_n.jpg?ig_cache_key=MTMyMzM4NzgyNjE3OTUwOTcyMg%3D%3D.2";
 var Mock = false;
 
 $(function() {
     detection(false);
+    setImage(imageUrl);
 
     /* Request Microsoft API */
     function detection(details) {
-        detect(image, {
+        detect(imageUrl, {
             "returnFaceId": "true",
             "returnFaceLandmarks": details,
             "returnFaceAttributes": "age,gender,smile,facialHair,glasses"
@@ -24,6 +25,11 @@ $(function() {
             $("#face_reponse").html(syntaxHighlight(error));
         });
     }
+
+    /* Update picture Url */
+    $('#url').on('input', function() {
+        setImage($('#url').val());
+    });
 
     /* Request Instagram API */
     $('#query').on('input', function() {

@@ -8,13 +8,14 @@ $(function() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
     picture = document.getElementById("picture");
-    setImage(image);
 });
 
 /* Setting image */
 function setImage(image) {
+    imageUrl = image;
     $("#picture").attr("src", image);
     $("#original").attr("src", image);
+    $('#url').val(image)
 }
 
 /* Drawing methods */
