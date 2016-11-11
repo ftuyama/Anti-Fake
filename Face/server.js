@@ -11,8 +11,12 @@ var app = express();
 
 // Configuração das rotas principais
 app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/ai'));
+app.use(express.static(__dirname + '/web'));
+app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/services'));
 app.get('/', function(req, res) {
-    res.send(fs.readFileSync("face.html", "utf8"));
+    res.send(fs.readFileSync("web/face.html", "utf8"));
 })
 
 // set the port of our application

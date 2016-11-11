@@ -2,11 +2,15 @@ html {
     overflow-x: hidden;
 }
 
-img,
+.pic,
 canvas {
     position: absolute;
     top: 10%;
     left: 10%;
+}
+
+.imgContainer {
+    float: left;
 }
 
 result {

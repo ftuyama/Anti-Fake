@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
     <link rel="stylesheet" href="face.css"></link>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="views/draw.js" type="text/javascript"></script>
-    <script src="views/pics.js" type="text/javascript"></script>
+    <!-- Scripts for Render -->
+    <script src="ai/evaluator.js" type="text/javascript"></script>
+    <script src="/views/draw.js" type="text/javascript"></script>
+    <script src="/views/pics.js" type="text/javascript"></script>
     <script src="face.js" type="text/javascript"></script>
     <script src="util.js" type="text/javascript"></script>
-    <script src="services/instagramService.js" type="text/javascript"></script>
-    <script src="services/microsoftService.js" type="text/javascript"></script>
+    <script src="/services/instagramService.js" type="text/javascript"></script>
+    <script src="/services/microsoftService.js" type="text/javascript"></script>
 </head>
 <nav id="nav" class="navbar navbar-inverse">
     <div id="navlinks" class="container-fluid">
@@ -27,7 +29,7 @@
 <body>
     <div class="row">
         <div class="col-sm-6">
-            <img id="picture" src=""></img>
+            <img id="picture" class="pic" src=""></img>
             <canvas id="canvas" width="400" height="400">
         </div>
         <div class="col-sm-6">
@@ -38,15 +40,18 @@
         </div>
     </div>
     <hr>
-    <div class="row" style="text-align:center;">
-        <h3>Busca usuário do Instagram</h3>
-        <label>Username: </label>
-        <input id="query" type="text"/>
-        <div id="insta_reponse"></div>
+    <div class="well container" style="text-align:center;">
+        <div class="row">
+            <h3>Busca usuário do Instagram</h3>
+            <label>Username: </label>
+            <input id="query" type="text"/>
+        </div><hr>
+        <div class="container">
+            <div id="insta"></div>
+        </div><br>
+        <button class="btn btn-success">Comparar</button>
     </div>
-    <div class="row" style="text-align:center;">
-        <div id="insta"></div>
-    </div>
+    <div id="insta_reponse"></div>
 </body>
 <footer>
     <hr>

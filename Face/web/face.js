@@ -21,7 +21,7 @@ $(function() {
         query($('#query').val())
             .then(function(response) {
                 $("#insta_reponse").html(syntaxHighlight(response));
-                display(response);
+                display(JSON.parse(response));
             }).catch(function(error) {
                 error = error ? error : 'Erro da API';
                 $("#insta_reponse").html(syntaxHighlight(error));
