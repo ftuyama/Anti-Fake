@@ -8,7 +8,7 @@ function display(response) {
     if (response == undefined || response.user == undefined || response.user.username == undefined)
         return;
     if (response.user.is_private) {
-        alert("Instagram privado!");
+        $("#insta_reponse").html("<p>Instagram privado!</p>");
         return;
     }
     show(response.user);
@@ -25,7 +25,8 @@ function show(user) {
     pics.forEach(function(pic) {
         if (pic != undefined && pic != "")
             $("#insta").append(
-                "<div class=\"imgContainer\"><img src=\"" + pic +
-                "\" height=\"200\" width=\"200\"/></div>");
+                "<div class=\"imgContainer\"><a href=\"" +
+                pic + "\"><img src=\"" + pic +
+                "\" height=\"200\" width=\"200\"/></a></div>");
     });
 }

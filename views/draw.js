@@ -8,11 +8,19 @@ $(function() {
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
     picture = document.getElementById("picture");
-    resize();
+    setImage(image);
 });
+
+/* Setting image */
+function setImage(image) {
+    $("#picture").attr("src", image);
+    $("#original").attr("src", image);
+}
 
 /* Drawing methods */
 function drawings(response) {
+    x_scale = picture.clientWidth / original.clientWidth;
+    y_scale = picture.clientHeight / original.clientHeight;
     drawImage(picture, 0, 0);
     drawRect(response[0].faceRectangle);
 }
@@ -30,12 +38,4 @@ function drawRect(rect) {
     context.lineWidth = 3;
     context.strokeStyle = 'green';
     context.stroke();
-}
-
-/* Resizing method */
-function resize() {
-    $("#picture").attr("src", image);
-    $("#original").attr("src", image);
-    x_scale = picture.clientWidth / original.clientWidth;
-    y_scale = picture.clientHeight / original.clientHeight;
 }

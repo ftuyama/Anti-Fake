@@ -32,9 +32,9 @@
             <div class="row pict">
                 <img id="picture" class="pic" src="" />
                 <img id="original" src="" style="visibility:hidden" />
-                <canvas id="canvas" width="400" height="300">
+                <canvas id="canvas" width="400" height="400">
             </div>
-            <div class="container">
+            <div class="container upload-container">
                 <label>Upload de Imagem: </label>
                 <input id="upload" type="file" accept="image/*"/>
                 <div id="evaluation"></div>
@@ -43,7 +43,8 @@
         </div>
         <div class="col-sm-6">
             <pre>
-                <h3>Face API Response</h3>
+                <h3 class="box-title">Face API Response
+                <button id="details" class="btn btn-info box-btn">Detalhes</button></h3>
                 <div id="face_reponse"></div>
             </pre>
         </div>

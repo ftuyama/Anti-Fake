@@ -3,8 +3,17 @@ html {
 }
 
 .pic {
-    height: 300px;
+    height: 400px;
     width: auto;
+}
+
+.box-btn {
+    float: right;
+}
+
+.box-title {
+    margin-top: 0px;
+    margin-bottom: -30px;
 }
 
 .pic,
@@ -14,8 +23,17 @@ canvas {
     left: 10%;
 }
 
+#original {
+    position: absolute;
+    z-index: 1;
+}
+
+.upload-container {
+    padding-left: 60px;
+}
+
 .pict {
-    height: 300px;
+    height: 420px;
 }
 
 .imgContainer {
