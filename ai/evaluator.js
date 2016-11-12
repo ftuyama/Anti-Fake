@@ -15,7 +15,8 @@ function evaluate(imageId, pics) {
             if (Mock) faceIds = ["b3a126d5-1c66-4df3-aeec-92d45c48bba6", "77242438-7284-46ba-8f29-7c60e3d2301f", "af8d2366-bc23-46b4-97c3-c48030046e50"];
             compare({
                 'faceId': imageId,
-                'faceIds': faceIds
+                'faceIds': faceIds,
+                'mode': 'matchFace'
             }).then(function(response) {
                 resolve([response, judge(response)]);
             }).catch(function(error) {
