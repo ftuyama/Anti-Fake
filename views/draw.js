@@ -11,11 +11,12 @@ $(function() {
 });
 
 /* Setting image */
-function setImage(image) {
+function setImage(image, upload) {
     imageUrl = image;
     $("#picture").attr("src", image);
     $("#original").attr("src", image);
-    $('#url').val(image)
+    if (!upload) $('#url').val(image);
+    drawImage(picture, 0, 0);
 }
 
 /* Drawing methods */
@@ -27,6 +28,7 @@ function drawings(response) {
 }
 
 function drawImage(image, x, y) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(image, x, y, picture.clientWidth, picture.clientHeight);
 }
 

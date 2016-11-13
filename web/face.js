@@ -2,15 +2,14 @@
  * Application View Controller
  */
 var imageId, imageUrl = "https://instagram.fsjk1-1.fna.fbcdn.net/t51.2885-15/e35/13687367_608310479350599_763014570_n.jpg?ig_cache_key=MTMyMzM4NzgyNjE3OTUwOTcyMg%3D%3D.2";
-var Mock = false;
 
 $(function() {
-    detection(false);
-    setImage(imageUrl);
+    detection(imageUrl, false, false);
+    setImage(imageUrl, false);
 
     /* Request Microsoft API */
-    function detection(details) {
-        detect(imageUrl, {
+    function detection(image, upload, details) {
+        detect(image, upload, {
             "returnFaceId": "true",
             "returnFaceLandmarks": details,
             "returnFaceAttributes": "age,gender,smile,facialHair,glasses"
@@ -26,16 +25,28 @@ $(function() {
         });
     }
 
+    /* Upload new picture */
+    $("#upload").change(function() {
+        var input = document.getElementById("upload");
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                setImage(reader.result, true);
+                detection(reader.result, true, false);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+
     /* Update picture Url */
     $('#url').on('input', function() {
-        setImage($('#url').val());
+        setImage($('#url').val(), false);
     });
 
     /* Request Instagram API */
     $('#query').on('input', function() {
         query($('#query').val())
             .then(function(response) {
-                if (Mock) $("#insta_reponse").html(syntaxHighlight(response));
                 display(JSON.parse(response));
             }).catch(function(error) {
                 error = error ? error : 'Erro da API';
@@ -65,6 +76,6 @@ $(function() {
 
     /* Request Details */
     $('#details').click(function() {
-        detection(true);
+        detection(imageUrl, false, true);
     });
 });
