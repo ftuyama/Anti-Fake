@@ -4,7 +4,7 @@
 
 var promises, faceIds = [];
 
-function evaluate(imageId, pics) {
+function evaluate(face, pics) {
     return new Promise(function(resolve, reject) {
         var deferreds = [];
         faceIds = [];
@@ -13,7 +13,7 @@ function evaluate(imageId, pics) {
         });
         $.when.apply($, deferreds).then(function() {
             compare({
-                'faceId': imageId,
+                'faceId': face.faceId,
                 'faceIds': faceIds,
                 'mode': 'matchFace'
             }).then(function(response) {
@@ -41,6 +41,8 @@ function evaluateOne(pic) {
     }).then(function(response) {
         if (response != undefined && response.length == 1)
             faceIds.push(response[0].faceId);
+        dfd.resolve();
+    }).catch(function(error) {
         dfd.resolve();
     });
     return dfd.promise();
