@@ -29,8 +29,10 @@ function judge(similar) {
     var consensus = 0,
         photos = 0;
     similar.forEach(function(rate) {
-        consensus += rate.confidence;
-        if (++photos == 5) break; // Take only 5 best
+        if (photos < 5) {
+            consensus += rate.confidence;
+            photos++;
+        }
     });
     if (photos == 0) return 0;
     return Math.round(1000 * consensus / photos) / 10.0;
