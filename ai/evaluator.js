@@ -26,11 +26,13 @@ function evaluate(face, pics) {
 }
 
 function judge(similar) {
-    var consensus = 0;
+    var consensus = 0,
+        photos = 0;
     similar.forEach(function(rate) {
         consensus += rate.confidence;
+        if (++photos == 5) break; // Take only 5 best
     });
-    return Math.round(1000 * consensus / similar.length) / 10.0;
+    return Math.round(1000 * consensus / photos) / 10.0;
 }
 
 function evaluateOne(pic) {
