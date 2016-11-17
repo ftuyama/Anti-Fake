@@ -32,6 +32,7 @@ function judge(similar) {
         consensus += rate.confidence;
         if (++photos == 5) break; // Take only 5 best
     });
+    if (photos == 0) return 0;
     return Math.round(1000 * consensus / photos) / 10.0;
 }
 
